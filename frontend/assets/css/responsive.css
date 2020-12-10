@@ -1,0 +1,181 @@
+@media only screen and (max-width: 800px) {
+  .slider-image{
+    width: 100% !important;
+  }
+.m_np{
+ margin:0px;
+}
+.university-logo img{
+ margin:15px;
+}
+.custom-dropdown {
+    margin-left: 0px;
+}
+  .vedio-content{
+        top: 35%;
+    left: 44px;
+
+  }
+  section { 
+    height:auto !important; 
+  }
+  .section-content {
+     position: relative; 
+     top: none; 
+     left: none; 
+     bottom: none; 
+     right: none; 
+}
+.slider-content h5{
+    color: #fff;
+    line-height: 30px;
+    font-size: 20px;
+}
+.slider-content{
+ padding-bottom: 50px;
+ top: 0%;
+}
+  .slider-content h1{
+    font-size: 20px;
+  }
+  #button-addon2{
+    font-size: 11px;
+  }
+  .tutor-title{
+    font-size: 33px;
+  }
+  .arrow-right-two{
+    right: 20px;
+  }
+  .arrow-left-two{
+    right: 81px;
+  }
+  .teacher-1{
+        height: auto;
+  }
+  .custom-tab-pane-step{
+    margin-bottom: 25px;
+  }
+  .display-3{
+    font-size: 40px !important;
+  }
+.japanes-1 {
+    position: relative;
+    height: 710px;
+    background-repeat: no-repeat;
+    background-position: inherit;
+    background-size: cover;
+    width: 100%;
+  }
+  .for-japanes-learner h1 {
+    font-family: lucida_grandebold;
+    font-size: 45px;
+    line-height: 52px;
+    color: #bc1b21;
+    font-style: normal;
+    font-weight: 700;
+  }
+  .for-japanes-learner .btn {
+    width: 100%;
+    font-size: 21px;
+  }
+  .for-japanes-learner {
+    padding: 0px 25px;
+  }
+  .social-icon{
+    text-align: center !important;
+    justify-content: center !important;
+    float: none !important;
+    margin-top: 10px;
+  }
+  .copy-right {
+    text-align: center;
+    color: #fff;
+  }
+.dashboard-btn a{
+    text-align: center;
+    margin: 10px 0px;
+}
+.dashboard-btn {
+  text-align: center;
+}
+.social-btns{
+display:none;
+}
+.search-box h2{
+ font-size: 20px;
+    text-align: center;
+}
+.mashtor-logo {
+    margin-left: -6px;
+}
+
+::placeholder {
+font-size:11px;
+}
+:-ms-.change-placeholder-placeholder { /* Internet Explorer 10-11 */
+ color: red;
+}
+
+::-ms-.change-placeholder-placeholder { /* Microsoft Edge */
+ color: red;
+}
+.wid-button {
+    font-family: AvenirNextLTPro-Medium;
+    padding: 10px 77px !important;
+}
+.wid-font-22 {
+    font-size: 20px;
+}
+.materials h2{
+    font-size: 25px;
+  }
+.out-mashtor-title{
+ font-size: 25px;
+}
+}
+
+@media only screen 
+  and (min-device-width: 800px) 
+  and (max-device-width: 900px) {
+.slider-image{
+    width: 100% !important;
+  }
+
+.m_np{
+ margin:0px;
+}
+}
+
+
+@media (max-width: 1200px) {
+  #photos {
+  -moz-column-count:    4;
+  -webkit-column-count: 4;
+  column-count:         4;
+  }
+}
+@media (max-width: 1000px) {
+  #photos {
+  -moz-column-count:    3;
+  -webkit-column-count: 3;
+  column-count:         3;
+  }
+}
+@media (max-width: 800px) {
+  #photos {
+  -moz-column-count:    2;
+  -webkit-column-count: 2;
+  column-count:         2;
+  }
+}
+@media (max-width: 400px) {
+  #photos {
+  -moz-column-count:    1;
+  -webkit-column-count: 1;
+  column-count:         1;
+  }
+.m_np{
+ margin:0px;
+}
+}
