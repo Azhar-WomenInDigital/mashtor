@@ -36,101 +36,102 @@ Route::get('iframe',function(){
 Route::post('find/checkbox/serach/{id}','SearchController@checkboxSearch');
 Route::post('paypal','PaymentController@payWithpaypal');
 
-	Route::group(['namespace'=>'Frontend'],function(){
+// User Course Category Controller
+Route::get('course-category/{$id}','Frontend\UserCourseCategoryController@courseCategory')->name('course.category');
 
-		Route::get('/','HomepageController@index');
-		Route::get('/help','HomepageController@help');
-		Route::get('/courses/{id}','HomepageController@courseId');
-		Route::get('/school-program/{id}','HomepageController@schoolProgramCourse');
-		Route::get('/language-course/{id}','HomepageController@schoolProgramCourse');
-		Route::get('/test-video','HomepageController@testVideo');
-		
-		Route::get('/course','HomepageController@course');
-		Route::get('ict/courses','HomepageController@ictCourses');
-		Route::get('languages/courses','HomepageController@languagesCourses');
-		Route::get('professinal/courses','HomepageController@professinalCourses');
-		//  Page
-		Route::get('/live-class','HomepageController@liveClass');	
-		
-		Route::post('message', 'HomepageController@sendMessage');
-
-		Route::any('/search','HomepageController@search');
-		Route::any('/course-search','HomepageController@searchCourseSchool');
-		Route::any('/pro-course-search','HomepageController@searchProCourse');
-
-
-
-
-		Route::get('teacher/find-tutor','Teacher\TeacherController@findTutor');
-		Route::get('teacher/tutor-details/{id}','Teacher\TeacherController@tutorDetails');
-
-
-		Route::get('/metarials-details/{id}','HomepageController@metarialsDetails');
-		Route::get('/presentation','HomepageController@presentation');
-		Route::get('/profile','ProfileController@index');
-		Route::post('/profile/update/{id}','ProfileController@update');
-		Route::get('/profile/account','ProfileController@account');
-		Route::post('profile/change-password','ProfileController@changePassword');
-		Route::get('profile/delete/account','ProfileController@deleteAccount');
-		Route::get('profile/delete/account/finally/{id}','ProfileController@deleteAccountfinally');
-		// Route::get('enrole','HomepageController@enrole');
-
-		Route::group(['middleware'=>['auth']],function(){
+Route::group(['namespace'=>'Frontend'],function(){
+	Route::get('/','HomepageController@index');
+	Route::get('/help','HomepageController@help');
+	Route::get('/courses/{id}','HomepageController@courseId');
+	Route::get('/school-program/{id}','HomepageController@schoolProgramCourse');
+	Route::get('/language-course/{id}','HomepageController@schoolProgramCourse');
+	Route::get('/test-video','HomepageController@testVideo');
 	
-			Route::get('/course-details/{id}','HomepageController@courseDetails');
-			Route::get('/course-details/{id}/checkout','HomepageController@enrole');
-			Route::get('/school-program/{id}/checkout','HomepageController@schoolProgramEnrol');
-			Route::get('enrole','HomepageController@enrole');
-			Route::post('enrole/course','HomepageController@enroleSave');
-			Route::post('enrole/course/school','HomepageController@enroleSchoolSave');
-			Route::get('enrole-successfull-msg','HomepageController@enrollMsg');
-			Route::get('enrole-successfull-msg-school','HomepageController@enrollMsgschool');
-			Route::get('profile/report','StudentDashboard@report');
+	Route::get('/course','HomepageController@course');
+	Route::get('ict/courses','HomepageController@ictCourses');
+	Route::get('languages/courses','HomepageController@languagesCourses');
+	Route::get('professinal/courses','HomepageController@professinalCourses');
+	//  Page
+	Route::get('/live-class','HomepageController@liveClass');	
 	
-			// Message
-			Route::get('message-list','MessageController@messageList');
-			Route::get('getMessage','MessageController@getMessage');
-			Route::post('insertMessage','MessageController@insertMessage');
-			Route::post('chat_message','MessageController@chatMessage');
-			// Route::post('msg','MessageController@msg')
-			
-			// Setting Option
-			Route::get('profile/setting','UserDashboardController@profileSetting');
-			Route::post('profile/setting','UserDashboardController@changePassword');
+	Route::post('message', 'HomepageController@sendMessage');
 
-			// Dashboard
-			Route::get('user/dashboard','DashboardController@userDashboard');
-			Route::get('user/class','DashboardController@userClass');
-			Route::get('notification','DashboardController@notification');
-
-			Route::get('invoice','DashboardController@invoice');
+	Route::any('/search','HomepageController@search');
+	Route::any('/course-search','HomepageController@searchCourseSchool');
+	Route::any('/pro-course-search','HomepageController@searchProCourse');
 
 
 
-			//  Live Msg 
-			Route::get('/livechatmessage/{id}','HomepageController@getMessage');
-			Route::get('/live-chat','HomepageController@liveChat');
-			Route::post('/msg','HomepageController@msg');
-			Route::get('/livechat-student','HomepageController@livechatStudent');
-			// Teacher
 
-		Route::get('teacher/become-a-teacher','Teacher\TeacherController@becomeAteacher');
+	Route::get('teacher/find-tutor','Teacher\TeacherController@findTutor');
+	Route::get('teacher/tutor-details/{id}','Teacher\TeacherController@tutorDetails');
+
+
+	Route::get('/metarials-details/{id}','HomepageController@metarialsDetails');
+	Route::get('/presentation','HomepageController@presentation');
+	Route::get('/profile','ProfileController@index');
+	Route::post('/profile/update/{id}','ProfileController@update');
+	Route::get('/profile/account','ProfileController@account');
+	Route::post('profile/change-password','ProfileController@changePassword');
+	Route::get('profile/delete/account','ProfileController@deleteAccount');
+	Route::get('profile/delete/account/finally/{id}','ProfileController@deleteAccountfinally');
+	// Route::get('enrole','HomepageController@enrole');
+
+
+
+
+	Route::group(['middleware'=>['auth']],function(){
+
+		Route::get('/course-details/{id}','HomepageController@courseDetails');
+		Route::get('/course-details/{id}/checkout','HomepageController@enrole');
+		Route::get('/school-program/{id}/checkout','HomepageController@schoolProgramEnrol');
+		Route::get('enrole','HomepageController@enrole');
+		Route::post('enrole/course','HomepageController@enroleSave');
+		Route::post('enrole/course/school','HomepageController@enroleSchoolSave');
+		Route::get('enrole-successfull-msg','HomepageController@enrollMsg');
+		Route::get('enrole-successfull-msg-school','HomepageController@enrollMsgschool');
+		Route::get('profile/report','StudentDashboard@report');
+
+		// Message
+		Route::get('message-list','MessageController@messageList');
+		Route::get('getMessage','MessageController@getMessage');
+		Route::post('insertMessage','MessageController@insertMessage');
+		Route::post('chat_message','MessageController@chatMessage');
+		// Route::post('msg','MessageController@msg')
 		
-		Route::post('teacher/msg','Teacher\TeacherController@supportMsg');
-		Route::post('teacher/request/{id}','Teacher\TeacherController@teacherRequest');
+		// Setting Option
+		Route::get('profile/setting','UserDashboardController@profileSetting');
+		Route::post('profile/setting','UserDashboardController@changePassword');
 
-		// Teacher Profile Update
-		Route::post('teacher/teacher-basic-info','Teacher\TeacherController@teacherBasicInfo');
-		Route::post('teacher/teacher-education-info','Teacher\TeacherController@teacherEducationInfo');
-		Route::post('teacher/teacher-courses-info','Teacher\TeacherController@teacherCourseInfo');
+		// Dashboard
+		Route::get('user/dashboard','DashboardController@userDashboard');
+		Route::get('user/class','DashboardController@userClass');
+		Route::get('notification','DashboardController@notification');
+
+		Route::get('invoice','DashboardController@invoice');
 
 
-		});
+
+		//  Live Msg 
+		Route::get('/livechatmessage/{id}','HomepageController@getMessage');
+		Route::get('/live-chat','HomepageController@liveChat');
+		Route::post('/msg','HomepageController@msg');
+		Route::get('/livechat-student','HomepageController@livechatStudent');
+		// Teacher
+
+	Route::get('teacher/become-a-teacher','Teacher\TeacherController@becomeAteacher');
+	
+	Route::post('teacher/msg','Teacher\TeacherController@supportMsg');
+	Route::post('teacher/request/{id}','Teacher\TeacherController@teacherRequest');
+
+	// Teacher Profile Update
+	Route::post('teacher/teacher-basic-info','Teacher\TeacherController@teacherBasicInfo');
+	Route::post('teacher/teacher-education-info','Teacher\TeacherController@teacherEducationInfo');
+	Route::post('teacher/teacher-courses-info','Teacher\TeacherController@teacherCourseInfo');
+
+
 	});
-
-
-
-
+});
 
 
 //  Login And Registration with facebook and gmail

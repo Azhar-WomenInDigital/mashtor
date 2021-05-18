@@ -17,22 +17,22 @@ class ComposerStaticInit86ef752dd3d4e2e03cdff45a6dbf6fb3
         '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
-        'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
+        'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '3109cb1a231dcd04bee1f9f620d46975' => __DIR__ . '/..' . '/paragonie/sodium_compat/autoload.php',
-        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
+        '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
         '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
         '6e67a68a136412df229d6e99b7e0c7ae' => __DIR__ . '/..' . '/nahid/talk/src/helpers/talk.php',
         '3d8fa36c9f723e762227dddca0acb92c' => __DIR__ . '/..' . '/php-junior/laravel-video-chat/helper/helpers.php',
-        '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -181,8 +181,8 @@ class ComposerStaticInit86ef752dd3d4e2e03cdff45a6dbf6fb3
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -578,6 +578,7 @@ class ComposerStaticInit86ef752dd3d4e2e03cdff45a6dbf6fb3
         'App\\Http\\Controllers\\Backend\\SuggesionManageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/SuggesionManageController.php',
         'App\\Http\\Controllers\\Backend\\UniversityLogoController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/UniversityLogoController.php',
         'App\\Http\\Controllers\\Backend\\UniversityNameControllr' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/UniversityNameControllr.php',
+        'App\\Http\\Controllers\\Backend\\UserCourseCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/UserCourseCategoryController.php',
         'App\\Http\\Controllers\\Backend\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/UsersController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\Frontend\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/DashboardController.php',
@@ -652,6 +653,8 @@ class ComposerStaticInit86ef752dd3d4e2e03cdff45a6dbf6fb3
         'App\\UniversityName' => __DIR__ . '/../..' . '/app/UniversityName.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\UserActivateCode' => __DIR__ . '/../..' . '/app/UserActivateCode.php',
+        'App\\UserCourseCategory' => __DIR__ . '/../..' . '/app/UserCourseCategory.php',
+        'App\\UserCourseName' => __DIR__ . '/../..' . '/app/UserCourseName.php',
         'App\\UserDetails' => __DIR__ . '/../..' . '/app/UserDetails.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Barryvdh\\Debugbar\\Console\\ClearCommand' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Console/ClearCommand.php',
