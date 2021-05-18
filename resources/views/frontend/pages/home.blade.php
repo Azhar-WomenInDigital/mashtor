@@ -1,13 +1,15 @@
 @extends('frontend.layouts.master')
 @section('front-page-title',' | Home ')
-@section('frontend-content')
+@section('page-css')
 <style>
-
-.modal-dialog {
+  .modal-dialog {
     max-width: 680px;
     margin: 1.75rem auto;
-
+  }
 </style>
+@endsection
+@section('frontend-content')
+
 <section class="materials  bg-off-white">
   <br><br>
   <div class="container pt-3 pb-4">
@@ -34,9 +36,6 @@
         </div>
       </div>
       @endforeach
-      
-      
-      
     </div>
   </div>
   <br><br>
@@ -45,7 +44,7 @@
   <br><br>
   <div class="">
     <div class="slider-main-section section-content">
-      <div class=" t">
+      <div class="t">
         <div class="tc">
           
           
@@ -103,8 +102,7 @@
   <br><br>
 </section> -->
 <section class="pt-5 pb-5 course-section bg-pink">
-
-  
+  <h1 class="text-center">Courses</h1>
   <div class="mt-5 owl-carousel owl-theme" id="owl-two">
     @foreach($courses_d2 as $course)
     <div class="item">
@@ -129,11 +127,6 @@
     </div>
     @endforeach
   </div>
-
-
-
-  
-  
 </section>
 <section class="our-tutor pt-5 bg-off-white">
   <h1 class="text-center">Our Mashtor</h1>
@@ -154,14 +147,13 @@
               <i class="fas fa-star"></i>
               <br><br> -->
               <p class="card-text">{{ str_limit($tutor->profile_tag, $limit = 20, $end = '..') }}</p>
-              <p class=""> {{$tutor->price}} Tk/Per hour</p><br>
+              <p class=""> ${{$tutor->price}} / hour</p><br>
             </a>
           </div>
         </div>
       </div>
       <!-- </div> -->
       @endforeach
-      
     </div>
   </div>
 </section>
@@ -311,9 +303,6 @@
   </ol>
   <div class="carousel-inner">
 
-
-	
-  
     <div class="carousel-item active">
       <img src="{{url('frontend/modal-img/01.png')}}" class="img-fluid" style="width:100%;height: 400px !important;object-fit: contain;object-position: center center;"/>
     </div>
