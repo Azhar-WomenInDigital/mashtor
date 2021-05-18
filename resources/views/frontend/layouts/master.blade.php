@@ -77,7 +77,43 @@
                   } ?>
                   <!-- <a class="dropdown-item" href="{{url('languages/courses')}}">Language Courses</a>
                   <a class="dropdown-item" href="{{url('professinal/courses')}}">Professinal Traning Courses</a> -->                
-                </div>             
+                </div>
+              </li>
+
+
+
+
+              <li class="nav-item dropdown  navig-link">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">   
+                 Choose Course
+                </a>
+                <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
+                  <?php
+                    $user_course_categories = DB::table('user_course_categories')->get();
+                    if (isset($user_course_categories) && !empty($user_course_categories)) {
+                    foreach ($user_course_categories as  $user_course_category) {
+                    ?>
+                  
+                  
+                    <a class="dropdown-item" href="{{ url('user-course-category', $user_course_category->id) }}">{{$user_course_category->user_course_category_name}}</a>
+                    <?php
+                    }
+                  } 
+                  ?>
+                </div>
+              </li>
+
+
+
+
+
+
+
+
+
+
+
+
               <li class="nav-item {{ request()->is('/teacher/find-tutor') ? 'active' : '' }}  navig-link">
                 <a class="nav-link"  href="{{url('teacher/find-tutor')}}">Find Mashtor</a>
               </li>
