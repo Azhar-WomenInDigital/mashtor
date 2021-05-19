@@ -1171,13 +1171,25 @@ color: gray;
 .dropdown-menu > li > a:hover, .dropdown-menu > .active > a:hover {
   text-decoration: none;
 }  
+
+@media only screen and (min-width: 992px) and (max-width: 1300px) {
+  .nav-item:nth-child(6) {
+    margin-right: 0 !important;
+  }
+  .navbar {
+    padding: .5rem 0rem;
+  }
+  .nav-link {
+    font-size: 13px !important;
+  }
+}
   
 @media (max-width: 767px) {
 
 
-  /* .nav-item:nth-child(6) {
+  .nav-item:nth-child(6) {
     margin-left: 0px;
-} */
+  }
 
 
 
