@@ -9,7 +9,7 @@
     
 @endsection
 @section('frontend-content')
-  <section style="height: 65vh">
+  <section style="height: 100vh">
     <div class="course-heading pt-sm-3 pt-md-4 pt-lg-5">
       <h1 class="pb-3">{{ $user_course_categories->user_course_category_name }}</h1>
       @if (auth()->user())
