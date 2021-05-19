@@ -45,7 +45,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('ict/courses', 'HomepageController@ictCourses');
     Route::get('languages/courses', 'HomepageController@languagesCourses');
     Route::get('professinal/courses', 'HomepageController@professinalCourses');
-//  Page
+    //  Page
     Route::get('/live-class', 'HomepageController@liveClass');
 
     Route::post('message', 'HomepageController@sendMessage');
@@ -54,8 +54,9 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::any('/course-search', 'HomepageController@searchCourseSchool');
     Route::any('/pro-course-search', 'HomepageController@searchProCourse');
 
-// User Course Category
+    // User Course Category
     Route::get('user-course-category/{id}', 'UserCourseController@userCourseCategory')->name('user.course.category');
+    Route::put('course-store', 'UserCourseController@updateCourse')->name('course.store');
 
     Route::get('teacher/find-tutor', 'Teacher\TeacherController@findTutor');
     Route::get('teacher/tutor-details/{id}', 'Teacher\TeacherController@tutorDetails');
@@ -68,7 +69,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::post('profile/change-password', 'ProfileController@changePassword');
     Route::get('profile/delete/account', 'ProfileController@deleteAccount');
     Route::get('profile/delete/account/finally/{id}', 'ProfileController@deleteAccountfinally');
-// Route::get('enrole','HomepageController@enrole');
+    // Route::get('enrole','HomepageController@enrole');
 
     Route::group(['middleware' => ['auth']], function () {
 
@@ -82,37 +83,37 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('enrole-successfull-msg-school', 'HomepageController@enrollMsgschool');
         Route::get('profile/report', 'StudentDashboard@report');
 
-// Message
+        // Message
         Route::get('message-list', 'MessageController@messageList');
         Route::get('getMessage', 'MessageController@getMessage');
         Route::post('insertMessage', 'MessageController@insertMessage');
         Route::post('chat_message', 'MessageController@chatMessage');
-// Route::post('msg','MessageController@msg')
+        // Route::post('msg','MessageController@msg')
 
-// Setting Option
+        // Setting Option
         Route::get('profile/setting', 'UserDashboardController@profileSetting');
         Route::post('profile/setting', 'UserDashboardController@changePassword');
 
-// Dashboard
+        // Dashboard
         Route::get('user/dashboard', 'DashboardController@userDashboard');
         Route::get('user/class', 'DashboardController@userClass');
         Route::get('notification', 'DashboardController@notification');
 
         Route::get('invoice', 'DashboardController@invoice');
 
-//  Live Msg
+        //  Live Msg
         Route::get('/livechatmessage/{id}', 'HomepageController@getMessage');
         Route::get('/live-chat', 'HomepageController@liveChat');
         Route::post('/msg', 'HomepageController@msg');
         Route::get('/livechat-student', 'HomepageController@livechatStudent');
-// Teacher
+        // Teacher
 
         Route::get('teacher/become-a-teacher', 'Teacher\TeacherController@becomeAteacher');
 
         Route::post('teacher/msg', 'Teacher\TeacherController@supportMsg');
         Route::post('teacher/request/{id}', 'Teacher\TeacherController@teacherRequest');
 
-// Teacher Profile Update
+        // Teacher Profile Update
         Route::post('teacher/teacher-basic-info', 'Teacher\TeacherController@teacherBasicInfo');
         Route::post('teacher/teacher-education-info', 'Teacher\TeacherController@teacherEducationInfo');
         Route::post('teacher/teacher-courses-info', 'Teacher\TeacherController@teacherCourseInfo');
@@ -140,18 +141,17 @@ Route::group(['namespace' => 'Backend'], function () {
 
         Route::prefix('admin')->group(function () {
 
-// Become-a-mashtor
+            // Become-a-mashtor
             Route::get('become-a-mashtor/{id}', 'UsersController@becomeAMashotr');
             Route::post('/teacher/teacher-basic-info/{id}', 'UsersController@teacherProfileEdit');
 
-// All Users
-
+            // All Users
             Route::get('all/users', 'UsersController@allUsers');
 
-//  Enroll
+            //  Enroll
             Route::get('/delete/enroll/{id}', 'UsersController@deleteEnroll');
             Route::get('/show/enroll/{id}', 'UsersController@showEnroll');
-//  Mashtor Request
+            //  Mashtor Request
             Route::get('mashtor/request', 'HomeController@mashtorRequest');
             Route::get('mashtor/request/details/{id}', 'HomeController@mashtorRequestDetails');
             Route::post('mashtor/request/approve', 'HomeController@mashtorRequestApprove');
@@ -166,35 +166,35 @@ Route::group(['namespace' => 'Backend'], function () {
             Route::get('/change-password', 'UsersController@chnagePassword');
             Route::post('/change-password', 'UsersController@savePassword');
 
-// Discount Code
+            // Discount Code
             Route::get('discount-code', 'DiscountCodeController@index');
             Route::get('discount-code-create', 'DiscountCodeController@create');
             Route::post('discount-code-create', 'DiscountCodeController@store');
 
-// course outline
+            // course outline
             Route::resource('/courseoutline', 'CourseOutlineController');
 
-// course instructor
+            // course instructor
             Route::resource('/instructor', 'InstructorController');
 
-// Studnet Academic
+            // Studnet Academic
             Route::resource('student_academic', 'StudentAcademicController');
             Route::resource('metarials', 'MetarialsController');
             Route::resource('courses', 'CourseController');
             Route::resource('coursescategory', 'CourseCategoryController');
 
-// Student
+            // Student
             Route::get('users/students', 'UsersController@getStudent');
             Route::get('/delete-users-student/{id}', 'UsersController@destroyUsersStudent');
             Route::get('/show-student/{id}', 'UsersController@showStudent');
-// Tutors
+            // Tutors
             Route::get('users/tutors', 'UsersController@getTutors');
             Route::get('/delete-users-tutor/{id}', 'UsersController@destroyUsersTutor');
             Route::get('/show-tutor/{id}', 'UsersController@showTutor');
             Route::get('tutor/request', 'UsersController@tutorRequest');
             Route::get('request/show-tutor/{id}', 'UsersController@showTutorRequest');
             Route::post('request/show-tutor/{id}', 'UsersController@tutorApprove');
-// Franchise
+            // Franchise
             Route::get('users/franchise', 'UsersController@getFranchise');
 
             Route::get('/delete-users-franchise/{id}', 'UsersController@destroyUsersFranchise');
@@ -205,10 +205,10 @@ Route::group(['namespace' => 'Backend'], function () {
             Route::resource('/blog', 'BlogController');
             Route::resource('/brand', 'BrandController');
 
-// University
+            // University
             Route::resource('/university', 'UniversityNameControllr');
 
-// Pages
+            // Pages
             Route::get('/about/description', 'AboutUsController@description');
             Route::post('/about/description/store', 'AboutUsController@description_store');
             Route::post('/about/description/update/{id}', 'AboutUsController@description_update');
@@ -229,10 +229,10 @@ Route::group(['namespace' => 'Backend'], function () {
             Route::post('/about/values/update/{id}', 'AboutUsController@values_update');
             Route::get('/about/values/destroy/{id}', 'AboutUsController@values_destroy');
 
-// Studnet Explore
+            // Studnet Explore
             Route::resource('student_experience', 'StudentExploreController');
             Route::resource('university_logo', 'UniversityLogoController');
-//  Education Mangement
+            //  Education Mangement
 
             Route::resource('/level', 'LevelController');
             Route::resource('/subject', 'SubjectController');
@@ -244,15 +244,15 @@ Route::group(['namespace' => 'Backend'], function () {
             Route::resource('/group', 'GroupController');
             Route::resource('/department', 'DepartmentControlle');
 
-//  Advaisori team
+            //  Advaisori team
 
             Route::resource('advisor', 'AdvisiorTeamController');
 
-// Message From Frotnend
+            // Message From Frotnend
             Route::get('suggesion', 'SuggesionManageController@suggestionList');
             Route::get('suggesion/delete', 'SuggesionManageController@suggestionDelete');
 
-// Ajax and jquery request
+            // Ajax and jquery request
             Route::get('level/{level}/faculty', 'SubjectController@getFaculty');
 
             Route::get('/product/attributes/{id}', 'ProductAttrabuteController@addProductAttributes');
@@ -261,13 +261,13 @@ Route::group(['namespace' => 'Backend'], function () {
             Route::resource('/product/features', 'ProductFeaturesController');
             Route::resource('/product', 'ProductController');
             Route::resource('doctor/specialities', 'DoctorSpecialitiesController');
-// Route::get('{slug}','CategoryController@slug');
+            // Route::get('{slug}','CategoryController@slug');
             Route::group(['namespace' => 'Website'], function () {
                 Route::resource('/submenu', 'SubmenuController');
                 Route::resource('/slider', 'SliderController');
                 Route::resource('/aboutus', 'AboutController');
                 Route::resource('/component', 'ComponentController');
-//Route::resource('/instructor','InstructorController');
+                //Route::resource('/instructor','InstructorController');
                 Route::resource('/website_setting', 'WebsiteSettingController');
                 Route::resource('/team', 'TeamController');
                 Route::resource('/gallery', 'GalleryController');

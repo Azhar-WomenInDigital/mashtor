@@ -5,21 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Mashtor.com">
-<meta name="description" content="e-learning platform Bangaldesh">
-<meta name="keywords" content="e-learning platform bd,web design courses,bangladesh web development training center,hmlt,css,js,php,laravel,Basic Computer,Graphics ">
-<meta name="robots" content="index, follow">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="language" content="English">
-<meta name="revisit-after" content=" days">
-<meta name="author" content="Women In Digital">
-
+    <meta name="description" content="e-learning platform Bangaldesh">
+    <meta name="keywords" content="e-learning platform bd,web design courses,bangladesh web development training center,hmlt,css,js,php,laravel,Basic Computer,Graphics ">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content=" days">
+    <meta name="author" content="Women In Digital">
     <meta name="keywords" content="Mashtor.com">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="robots" content="all">
     <title>Mashtor.com @yield('title')</title>
     <!-- Bootstrap Core CSS -->
-    <!-- Favicon -->
-    
     <link rel="icon" type="image/png" sizes="32x32" href="{{url('frontend/favicon-32x32.png')}}">
     <link rel="stylesheet" href="{{url('frontend/assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url('frontend/assets/css/owl.carousel.min.css')}}">
@@ -37,7 +34,6 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Barlow:200,300,300i,400,400i,500,500i,600,700,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
-
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -52,9 +48,9 @@
             <img src="{{url('frontend/assets/imgs/WID TECH School.png')}}" alt="" class="img-fluid logo">
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon" style="">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+          <span class="navbar-toggler-icon" style="">
+          <span class="navbar-toggler-icon"></span>
+          </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item {{ request()->is('/') ? 'active' : '' }}  navig-link">
@@ -68,21 +64,15 @@
                   <?php
                     $courseCategory = DB::table('course_categories')->get();
                     foreach($courseCategory as $cat){
-                      
                   ?>
-                  
-                  
-                    <a class="dropdown-item" href="{{url('courses',$cat->id)}}">{{$cat->name}}</a>
-                    <?php
-                  } ?>
+                  <a class="dropdown-item" href="{{url('courses',$cat->id)}}">{{$cat->name}}</a>
+                  <?php
+                  } 
+                  ?>
                   <!-- <a class="dropdown-item" href="{{url('languages/courses')}}">Language Courses</a>
                   <a class="dropdown-item" href="{{url('professinal/courses')}}">Professinal Traning Courses</a> -->                
                 </div>
               </li>
-
-
-
-
               <li class="nav-item dropdown  navig-link">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">   
                  Choose Course
@@ -93,8 +83,6 @@
                     if (isset($user_course_categories) && !empty($user_course_categories)) {
                     foreach ($user_course_categories as  $user_course_category) {
                     ?>
-                  
-                  
                     <a class="dropdown-item" href="{{ url('user-course-category', $user_course_category->id) }}">{{$user_course_category->user_course_category_name}}</a>
                     <?php
                     }
@@ -102,29 +90,15 @@
                   ?>
                 </div>
               </li>
-
-
-
-
-
-
-
-
-
-
-
-
               <li class="nav-item {{ request()->is('/teacher/find-tutor') ? 'active' : '' }}  navig-link">
                 <a class="nav-link"  href="{{url('teacher/find-tutor')}}">Find Mashtor</a>
               </li>
               <li class="nav-item {{ request()->is('/live-class') ? 'active' : '' }}  navig-link">
                 <a class="nav-link"  href="{{url('live-class')}}">Demo <span class="pulse"></span></a>
               </li>
-              
               <li class="nav-item {{ request()->is('/teacher/become-a-teacher') ? 'active' : '' }}  navig-link">
                 <a class="nav-link btn btn-danger wid-bg-red wid-bg-red-hover text-white" href="{{url('/teacher/become-a-teacher')}}">Become  a mashtor</a>
               </li>
-
               <!-- <li class="nav-item {{ request()->is('/live-chat') ? 'active' : '' }}">
                 <a class="nav-link" href="{{url('/live-chat')}}">Live Chat</a>
               </li> -->
@@ -134,23 +108,18 @@
               @auth
               <li class="nav-item dropdown  navig-link">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                
                  <?php echo"<img src='".asset(Auth::user()->image)."' alt='sdfd' style='height: 30px;width: 30px;border-radius: 100%;object-fit: cover;object-position: center center;'>"; ?> {{Auth::user()->fullname}}
                 </a>
                 <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
-                  
                   <a class="dropdown-item" href="{{url('user/dashboard')}}">Dashboard</a>
                   <a class="dropdown-item" href="{{url('live-chat')}}">Message</a>
                   <a class="dropdown-item" href="{{url('notification')}}">Notifications</a>
-                  
                   <a class="dropdown-item" href="#">Purchase History</a>
                   <a class="dropdown-item" href="{{url('help')}}">Help</a>
                   <a class="dropdown-item" href="{{url('logout')}}">Log Out</a>
-                  
                 </div>
               </li>
-             @else
-
+              @else
               <li class="nav-item {{ request()->is('login') ? 'active' : '' }}  navig-link">
                 <a class="nav-link text-success-custom" href="{{url('login')}}">Log in</a>
               </li>
@@ -160,54 +129,49 @@
               <li class="nav-item {{ request()->is('user-type') ? 'active' : '' }}  navig-link">
                 <a class="nav-link text-success-custom" href="{{url('register')}}">Sign up</a>
               </li>
-             @endauth
-              
+              @endauth
             </ul>
           </div>
         </div>
       </nav>
     </header>
-    
     @yield('frontend-content')
  
-<br>
-
-
+    <br>
       <div class="flex social-btns">
-          <a class="app-btn blu flex vert" href="http:apple.com" style="text-decoration: none;">
-              <i class="fab fa-apple"></i>
-              <p>Available on the <br/> <span class="big-txt">App Store</span></p>
-          </a>
-          <a class="app-btn blu flex vert" href="http:google.com" style="text-decoration: none;">
-              <i class="fab fa-google-play"></i>
-              <p>Get it on <br/> <span class="big-txt">Google Play</span></p>
-          </a>
-          
+        <a class="app-btn blu flex vert" href="http:apple.com" style="text-decoration: none;">
+            <i class="fab fa-apple"></i>
+            <p>Available on the <br/> <span class="big-txt">App Store</span></p>
+        </a>
+        <a class="app-btn blu flex vert" href="http:google.com" style="text-decoration: none;">
+            <i class="fab fa-google-play"></i>
+            <p>Get it on <br/> <span class="big-txt">Google Play</span></p>
+        </a>
       </div>
       <br>
 
 
 
-        <footer class="pt-4 pb-2">
-          <div class="footer">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-6">
-                <p class="copy-right"> &copy Copyright Women in Digital - <?php echo date('Y'); ?></p>
-              </div>
-              <div class="col-md-6">
-                <ul class="float-right social-icon">
-                  <li><a href="#"><i class="fab fa-facebook-f footer-icon facebook"></i></a></li>
-                  <li><a href="#"><i class="fab fa-twitter footer-icon twitter"></i></a></li>
-                  <li><a href="#"><i class="fab fa-instagram footer-icon instagram"></i></a></li>
-                  <li><a href="#"><i class="fab fa-linkedin-in footer-icon linkedin"></i></a></li>
-                  <li><a href="#"><i class="fab fa-google-plus-g footer-icon google-plus"></i></a></li>
-                </ul>
-              </div>
+      <footer class="pt-4 pb-2">
+        <div class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="copy-right"> &copy Copyright Women in Digital - <?php echo date('Y'); ?></p>
             </div>
+            <div class="col-md-6">
+              <ul class="float-right social-icon">
+                <li><a href="#"><i class="fab fa-facebook-f footer-icon facebook"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter footer-icon twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram footer-icon instagram"></i></a></li>
+                <li><a href="#"><i class="fab fa-linkedin-in footer-icon linkedin"></i></a></li>
+                <li><a href="#"><i class="fab fa-google-plus-g footer-icon google-plus"></i></a></li>
+              </ul>
             </div>
           </div>
-        </footer>
+          </div>
+        </div>
+      </footer>
                 <!-- <div class="alert alert-warning alert-dismissible fade show fixed-bottom" style="margin:0px;" role="alert">
   <strong>Notice</strong> This site is  Development mood.You have face any problem or issu or bug please <a href="#" target="_blank">contact us</a>.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
