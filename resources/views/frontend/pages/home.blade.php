@@ -1,13 +1,14 @@
 @extends('frontend.layouts.master')
 @section('front-page-title',' | Home ')
-@section('frontend-content')
+@section('frontend-styles')
 <style>
-
-.modal-dialog {
+  .modal-dialog {
     max-width: 680px;
     margin: 1.75rem auto;
-
-</style>
+  }
+  </style>
+@endsection
+@section('frontend-content')
 <section class="materials  bg-off-white">
   <br><br>
   <div class="container pt-3 pb-4">
@@ -346,7 +347,7 @@
 </script>
 <script>
 $('#popupModal').modal({
-  show: true
+  show: false
 })
 </script>
     @endsection
