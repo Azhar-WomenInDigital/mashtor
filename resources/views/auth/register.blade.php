@@ -19,7 +19,7 @@ display: block;
                        
                     
                         <div class="form-group">
-                            <label for="fullname" class="">Full Name</label>
+                            <label for="fullname" class="">Full Name *</label>
                             <input type="text" class="form-control custom-form-control {{ $errors->has('fullname') ? ' is-invalid' : '' }}" id="fullname" name="fullname" value="{{ old('fullname') }}" required autocomplete="fullname" autofocus >
                             @if ($errors->has('fullname'))
                             <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@ display: block;
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="">Email</label>
+                            <label for="email" class="">Email *</label>
                             <input type="email" class="form-control custom-form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus >
                             @if ($errors->has('email'))
                             <span class="invalid-feedback" role="alert">
@@ -39,7 +39,7 @@ display: block;
                         </div>
                         
                         <div class="form-group">
-                            <label for="number" class="">Mobile Number</label>
+                            <label for="number" class="">Mobile Number *</label>
                             <input type="number" class="form-control custom-form-control {{ $errors->has('number') ? ' is-invalid' : '' }}" id="number" name="number" value="{{ old('number') }}" required autocomplete="number" autofocus>
                             @if ($errors->has('number'))
                             <span class="invalid-feedback" role="alert">
@@ -50,7 +50,7 @@ display: block;
                         
                     
                         <div class="form-group">
-                            <label for="nid" class=""> Upload Your ID or NID or Passport or Birth Certificate Copy</label> <br>
+                            <label for="nid" class=""> Upload Your ID or NID or Passport or Birth Certificate Copy *</label> <br>
                             <input type="file" class="{{ $errors->has('nid') ? ' is-invalid' : '' }}" id="nid" name="nid"  required autofocus>
                             @if($errors->has('nid'))
                             <span class="invalid-feedback" role="alert">
@@ -60,7 +60,7 @@ display: block;
                         </div>
                         
                         <div class="form-group">
-                            <label for="password" class="">Password</label>
+                            <label for="password" class="">Password *</label>
                             <!-- <input type="password" class="form-control custom-form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" name="password" required autofocus> -->
 
                             <input type="password" id="password-field1" class="form-control custom-form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" id="password" name="password">
@@ -73,7 +73,7 @@ display: block;
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="password" class="">Confirm Password</label>
+                            <label for="password" class="">Confirm Password *</label>
                             <input type="password" id="password-field2" class="form-control custom-form-control" id="password" name="password_confirmation" required>
                             <span toggle="#password-field2" class="fa fa-fw fa-eye-slash field-icon toggle-password"></span>
                         </div>
@@ -85,6 +85,7 @@ display: block;
                                 <strong>{{ $errors->first('discount_code') }}</strong>
                             </span>
                             @endif
+                            <span>If you have a discount code, avail it. Otherwise skip</span>
                         </div>
                         <div class="form-group text-center pt-5">
                             <button type="submit" class="btn font-weight-bold wid-bg-red p-2 wid-bg-red-hover wid-border-radius-none wid-font-22 wid-button wid-sm-font-18">Submit</button>

@@ -123,6 +123,7 @@ p,h1,h2,h3,h4,h5,h6{
 .sub-nav{
   margin-top: 105px;
 }
+
 .nav-item{
   font-weight: 700;
     color: #4b4b4b;
@@ -1213,7 +1214,10 @@ color: gray;
    }
   .dropdown-menu {
       padding-left: 10px;
+	  width: 220px;
+      white-space: unset !important;
   }
+
   .dropdown-menu .dropdown-menu {
       padding-left: 20px;
    }
