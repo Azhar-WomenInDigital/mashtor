@@ -26,6 +26,7 @@
                         <a class="nav-link  {{ request()->is('profile/account') ? 'active' : '' }}" id="" href="{{url('profile/account')}}">Setting</a>
                         <a class="nav-link {{ request()->is('help') ? 'active' : '' }}" id="" href="{{url('help')}}">Help</a>
                         <a class="nav-link {{ request()->is('profile/delete/account') ? 'active' : '' }}" id="" href="{{url('profile/delete/account')}}">Close Account</a>
+                        
                     </div>
                 </div>
                 </div>

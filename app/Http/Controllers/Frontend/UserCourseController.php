@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Frontend;
+
+use App\Http\Controllers\Controller;
+use App\Models\UserCourseCategory;
+use App\Models\UserCourseSubject;
 use App\User;
 use Illuminate\Http\Request;
-use App\Models\UserCourseSubject;
-use App\Models\UserCourseCategory;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class UserCourseController extends Controller
@@ -17,7 +18,8 @@ class UserCourseController extends Controller
         return view('frontend.pages.user-course.user-course-info', compact('user_course_categories', 'user_course_subjects'));
     }
 
-    public function updateCourse(Request $request){
+    public function updateCourse(Request $request)
+    {
         $this->validate($request, [
             'course_name' => 'required',
         ]);
@@ -26,4 +28,5 @@ class UserCourseController extends Controller
         $user->save();
         return redirect()->route('home');
     }
+
 }

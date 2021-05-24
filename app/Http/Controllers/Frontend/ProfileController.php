@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\UserCourseSubject;
 use App\User;
-use Session;
 use Auth;
 use Hash;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input as input;
+use Session;
+
 class ProfileController extends Controller
 {
     /**
@@ -26,24 +28,27 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function account(){
+    public function account()
+    {
         return view('frontend.pages.profile.account');
     }
 
-    public function changePassword(){
+    public function changePassword()
+    {
         $user = User::find(Auth::user()->id);
-        if(Hash::check(Input::get('passwordOld'),$user['password']) && Input::get('password') == Input::get('password_confirmation')){
+        if (Hash::check(Input::get('passwordOld'), $user['password']) && Input::get('password') == Input::get('password_confirmation')) {
             $user->password = bcrypt(Input::get('password'));
             $user->save();
-             Session::flash('success', 'Update  Successfully !');
+            Session::flash('success', 'Update  Successfully !');
             return redirect('logout');
-        }else{
-            Session::flash('error','Sorry Failed !!');
+        } else {
+            Session::flash('error', 'Sorry Failed !!');
             return back();
         }
     }
 
-    public function deleteAccount(){
+    public function deleteAccount()
+    {
         return view('frontend.pages.profile.deleteAccount');
     }
 
@@ -102,8 +107,7 @@ class ProfileController extends Controller
         $user->number = $request->number;
         $image = $request->file('image');
         if ($image) {
-            $image_name = Auth::user()->id.time().'.'.request()->image->getClientOriginalExtension();
-
+            $image_name = Auth::user()->id . time() . '.' . request()->image->getClientOriginalExtension();
 
             $image_full_name = $image_name;
             $destination_path = 'uploads/user/profile/pic/';

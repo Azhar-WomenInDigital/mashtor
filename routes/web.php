@@ -60,7 +60,6 @@ Route::group(['namespace' => 'Frontend'], function () {
 
     Route::get('teacher/find-tutor', 'Teacher\TeacherController@findTutor');
     Route::get('teacher/tutor-details/{id}', 'Teacher\TeacherController@tutorDetails');
-
     Route::get('/metarials-details/{id}', 'HomepageController@metarialsDetails');
     Route::get('/presentation', 'HomepageController@presentation');
     Route::get('/profile', 'ProfileController@index');
@@ -69,6 +68,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::post('profile/change-password', 'ProfileController@changePassword');
     Route::get('profile/delete/account', 'ProfileController@deleteAccount');
     Route::get('profile/delete/account/finally/{id}', 'ProfileController@deleteAccountfinally');
+
     // Route::get('enrole','HomepageController@enrole');
 
     Route::group(['middleware' => ['auth']], function () {
