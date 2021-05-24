@@ -20,7 +20,6 @@ font-size: 4.5rem;
 <div class="col-md-9">
   <div class="card">
   <div class="card-body">
-     
   <h1 id="head"> Edit Profile </h1><br><br>
   <form action="{{url('profile/update',Auth::user()->id)}}" method="post" enctype="multipart/form-data">
     @csrf
