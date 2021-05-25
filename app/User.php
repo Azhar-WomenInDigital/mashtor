@@ -41,4 +41,8 @@ class User extends Authenticatable
     public function isOnline(){
         return Cache::has('user-is-online-' . $this->id);
     }
+
+    public function userCourseSubject(){
+        return $this->belongsTo('App\User');
+    }
 }

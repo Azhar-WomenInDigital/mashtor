@@ -12,4 +12,8 @@ class UserCourseSubject extends Model
     {
         return $this->belongsTo('App\Models\UserCourseSubject');
     }
+
+    public function user(){
+        return $this->hasMany(UserCourseSubject::class);
+    }
 }
