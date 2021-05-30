@@ -11,7 +11,6 @@
 						@csrf
 						<div class="card-body">
 							<h1> Courses </h1> <br>
-
 							<div class="form-group">
 								<label for="">Course Category</label>
 								<select name="course_cat" id="" class="form-control">
@@ -21,7 +20,6 @@
 					                    foreach($courseCategory as $cat){
 					                ?>
 					                <option value="{{$cat->id}}">{{$cat->name}}</option>
-
 					            <?php } ?>
 								</select>
 							</div>

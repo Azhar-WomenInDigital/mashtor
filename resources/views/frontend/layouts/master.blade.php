@@ -73,6 +73,8 @@
                   <a class="dropdown-item" href="{{url('professinal/courses')}}">Professinal Traning Courses</a> -->                
                 </div>
               </li>
+
+
               <li class="nav-item dropdown  navig-link">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">   
                  Choose Course
@@ -90,6 +92,24 @@
                   ?>
                 </div>
               </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+             
               <li class="nav-item {{ request()->is('/teacher/find-tutor') ? 'active' : '' }}  navig-link">
                 <a class="nav-link"  href="{{url('teacher/find-tutor')}}">Find Mashtor</a>
               </li>

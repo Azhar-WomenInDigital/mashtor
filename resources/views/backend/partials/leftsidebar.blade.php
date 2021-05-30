@@ -76,8 +76,16 @@
                 </li>
 
                  
- <li class="has_sub">
+                <li class="has_sub">
                     <a href="{{url('admin/discount-code')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span> Discount Code </span> </a>
+                </li>
+
+                <li class="has_sub">
+                    <a href="{{url('admin/user-course-category')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span> User Course Category </span> </a>
+                </li>
+
+                <li class="has_sub">
+                    <a href="{{url('admin/user-course')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span> User Course </span> </a>
                 </li>
                 
                 

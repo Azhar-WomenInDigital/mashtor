@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Courses;
-use App\DiscountCode;
+use DB;
+use Auth;
+use Mail;
+use Session;
+use App\User;
 use App\Enrol;
-use App\Http\Controllers\Controller;
+use App\Courses;
+use App\Metarial;
+use Pusher\Pusher;
+use App\DiscountCode;
 use App\LiveMessageChat;
 use App\Mail\NoticeMail;
-use App\Metarial;
-use App\Rules\CheckDiscountCode;
-use App\User;
-use Auth;
-use DB;
+use App\Models\UserCourse;
 use Illuminate\Http\Request;
+use App\Rules\CheckDiscountCode;
+use App\Models\UserCourseCategory;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
-use Mail;
-use Pusher\Pusher;
-use Session;
 
 class HomepageController extends Controller
 {
@@ -334,4 +336,23 @@ class HomepageController extends Controller
         $msg->save();
         return redirect('livechat-student');
     }
+
+    public function userCourseCategory($id)
+    {
+        $user_course_categories = UserCourseCategory::findOrFail($id);
+        $user_course = UserCourse::where('user_course_category_id', $id)->latest()->get();
+        return view('frontend.pages.user-course.user-course-info', compact('user_course_categories', 'user_course'));
+    }
+
+    public function updateCourse(Request $request)
+    {
+        $this->validate($request, [
+            'course_name' => 'required',
+        ]);
+        $user = User::findOrFail(Auth::id());
+        $user->course_name = $request->course_name;
+        $user->save();
+        return redirect()->route('home');
+    }
+
 }

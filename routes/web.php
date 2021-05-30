@@ -54,9 +54,10 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::any('/course-search', 'HomepageController@searchCourseSchool');
     Route::any('/pro-course-search', 'HomepageController@searchProCourse');
 
-    // User Course Category
-    Route::get('user-course-category/{id}', 'UserCourseController@userCourseCategory')->name('user.course.category');
-    Route::put('course-store', 'UserCourseController@updateCourse')->name('course.store');
+    // Select Course Category
+    Route::get('user-course-category/{id}', 'HomepageController@userCourseCategory');
+    Route::put('course-store', 'HomepageController@updateCourse')->name('course.store');
+
 
     Route::get('teacher/find-tutor', 'Teacher\TeacherController@findTutor');
     Route::get('teacher/tutor-details/{id}', 'Teacher\TeacherController@tutorDetails');
@@ -170,6 +171,23 @@ Route::group(['namespace' => 'Backend'], function () {
             Route::get('discount-code', 'DiscountCodeController@index');
             Route::get('discount-code-create', 'DiscountCodeController@create');
             Route::post('discount-code-create', 'DiscountCodeController@store');
+
+            //User Course Category 
+            Route::get('user-course-category', 'UserCourseCategoryController@index');
+            Route::post('user-course-category-store', 'UserCourseCategoryController@store');
+            Route::get('user-course-category-edit/{id}', 'UserCourseCategoryController@edit');
+            Route::put('user-course-category-update/{id}', 'UserCourseCategoryController@update');
+            Route::delete('user-course-category-delete/{id}', 'UserCourseCategoryController@destroy');
+
+            //User Course 
+            Route::get('user-course', 'UserCourseController@index');
+            Route::post('user-course-store', 'UserCourseController@store');
+            Route::get('user-course-edit/{id}', 'UserCourseController@edit');
+            Route::put('user-course-update/{id}', 'UserCourseController@update');
+            Route::delete('user-course-delete/{id}', 'UserCourseController@destroy');
+
+
+
 
             // course outline
             Route::resource('/courseoutline', 'CourseOutlineController');

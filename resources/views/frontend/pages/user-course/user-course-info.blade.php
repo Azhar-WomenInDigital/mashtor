@@ -19,10 +19,10 @@
           <form action="{{ route('course.store') }}" method="POST">
             @csrf
             @method('PUT')
-            @foreach ($user_course_subjects as $user_course_subject)
+            @foreach ($user_course as $data)
             <div class="form-check pb-sm-3">
               <label class="form-check-label" for="radio1">
-                <input type="radio" class="form-check-input" id="radio1" name="course_name" value="{{ $user_course_subject->user_course_subject }}" >{{ $user_course_subject->user_course_subject }}
+                <input type="radio" class="form-check-input" id="radio1" name="course_name" value="{{ $data->user_course_name }}" >{{ $data->user_course_name }}
               </label>
             </div>
             @endforeach
@@ -35,8 +35,8 @@
         <div class="col-md-6">
           <div class="card" style="width: 100%;">
             <div class="card-body">
-              @foreach ($user_course_subjects as $user_course_subject)
-              <h6 class="py-sm-2">{{ $user_course_subject->user_course_subject }}</h6>
+              @foreach ($user_course as $data)
+              <h6 class="py-sm-2">{{ $data->user_course_name }}</h6>
               @endforeach
             </div>
           </div>
