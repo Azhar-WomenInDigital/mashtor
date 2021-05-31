@@ -344,14 +344,17 @@ class HomepageController extends Controller
         return view('frontend.pages.user-course.user-course-info', compact('user_course_categories', 'user_course'));
     }
 
-    public function updateCourse(Request $request)
+    public function selectedUserCourseStore(Request $request)
     {
         $this->validate($request, [
-            'course_name' => 'required',
+            'usercourse_id' => 'required',
+            'user_id' => 'required',
         ]);
-        $user = User::findOrFail(Auth::id());
-        $user->course_name = $request->course_name;
-        $user->save();
+
+        $data = DB::table('user_user_course')->insert([
+            'usercourse_id' => $request->usercourse_id,
+            'user_id' => $request->user_id,
+        ]);
         return redirect()->route('home');
     }
 

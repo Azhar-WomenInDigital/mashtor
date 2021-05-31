@@ -16,16 +16,16 @@
       <div class="row justify-content-center">
         <div class="col-md-6">
           <h2 class="pb-sm-3 pb-md-4">Please select one of the following courses</h2>
-          <form action="{{ route('course.store') }}" method="POST">
+          <form action="{{ url('selected-user-course-store') }}" method="POST">
             @csrf
-            @method('PUT')
             @foreach ($user_course as $data)
             <div class="form-check pb-sm-3">
               <label class="form-check-label" for="radio1">
-                <input type="radio" class="form-check-input" id="radio1" name="course_name" value="{{ $data->user_course_name }}" >{{ $data->user_course_name }}
+                <input type="radio" class="form-check-input" id="radio1" name="usercourse_id" value="{{ $data->id }}" >{{ $data->user_course_name }}
               </label>
             </div>
             @endforeach
+            <input type="hidden" value="{{ auth()->user()->id }}" name="user_id">
             <button type="submit" class="btn btn-danger wid-bg-red wid-bg-red-hover text-white">Ok</button>
           </form>
         </div>

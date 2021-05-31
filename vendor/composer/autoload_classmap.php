@@ -108,6 +108,7 @@ return array(
     'App\\Models\\Frontend\\StudentCategory' => $baseDir . '/app/Models/Frontend/StudentCategory.php',
     'App\\Models\\Frontend\\TutorEducation' => $baseDir . '/app/Models/Frontend/TutorEducation.php',
     'App\\Models\\Frontend\\WhichSubjectTeach' => $baseDir . '/app/Models/Frontend/WhichSubjectTeach.php',
+    'App\\Models\\SelectdCourse' => $baseDir . '/app/Models/SelectdCourse.php',
     'App\\Models\\UserCourse' => $baseDir . '/app/Models/UserCourse.php',
     'App\\Models\\UserCourseCategory' => $baseDir . '/app/Models/UserCourseCategory.php',
     'App\\Notifications\\TutorRequestNotification' => $baseDir . '/app/Notifications/TutorRequestNotification.php',

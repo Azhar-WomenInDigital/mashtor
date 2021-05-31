@@ -56,7 +56,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 
     // Select Course Category
     Route::get('user-course-category/{id}', 'HomepageController@userCourseCategory');
-    Route::put('course-store', 'HomepageController@updateCourse')->name('course.store');
+    Route::post('selected-user-course-store', 'HomepageController@selectedUserCourseStore')->name('selected.user.course.store');
 
 
     Route::get('teacher/find-tutor', 'Teacher\TeacherController@findTutor');
@@ -99,6 +99,7 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('user/dashboard', 'DashboardController@userDashboard');
         Route::get('user/class', 'DashboardController@userClass');
         Route::get('notification', 'DashboardController@notification');
+        Route::get('user-course-info', 'DashboardController@userCourseInfo');
 
         Route::get('invoice', 'DashboardController@invoice');
 

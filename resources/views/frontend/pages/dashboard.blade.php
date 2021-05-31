@@ -42,7 +42,11 @@
 
 </div>
 <br><br>
+{{-- <p hidden>
+{{ $user = auth()->user()->id }}
 
+</p> --}}
+    {{-- <a href="{{ url('user-course-info', $user) }}">Selected Course</a> --}}
     <h3 class="text-center text-danger">Enroll History</h3>
 <hr>
 <?php

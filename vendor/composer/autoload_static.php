@@ -636,6 +636,7 @@ class ComposerStaticInit86ef752dd3d4e2e03cdff45a6dbf6fb3
         'App\\Models\\Frontend\\StudentCategory' => __DIR__ . '/../..' . '/app/Models/Frontend/StudentCategory.php',
         'App\\Models\\Frontend\\TutorEducation' => __DIR__ . '/../..' . '/app/Models/Frontend/TutorEducation.php',
         'App\\Models\\Frontend\\WhichSubjectTeach' => __DIR__ . '/../..' . '/app/Models/Frontend/WhichSubjectTeach.php',
+        'App\\Models\\SelectdCourse' => __DIR__ . '/../..' . '/app/Models/SelectdCourse.php',
         'App\\Models\\UserCourse' => __DIR__ . '/../..' . '/app/Models/UserCourse.php',
         'App\\Models\\UserCourseCategory' => __DIR__ . '/../..' . '/app/Models/UserCourseCategory.php',
         'App\\Notifications\\TutorRequestNotification' => __DIR__ . '/../..' . '/app/Notifications/TutorRequestNotification.php',

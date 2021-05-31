@@ -2,10 +2,11 @@
 
 namespace App;
 
+use App\Models\UserCourse;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
@@ -44,5 +45,9 @@ class User extends Authenticatable
 
     public function userCourseSubject(){
         return $this->belongsTo('App\User');
+    }
+
+    public function userCourse(){
+        return $this->hasMany(UserCourse::class, 'user_user_course', 'usercourse_id', 'user_id');
     }
 }
