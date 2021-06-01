@@ -17,9 +17,9 @@ class CreateCourseusersTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_course_category_id');
             $table->string('user_course_name');
-            $table->string('class_link');
-            $table->string('start_time');
-            $table->string('day');
+            $table->string('class_link')->nullable();
+            $table->string('start_time')->nullable();
+            $table->string('day')->nullable();
             $table->timestamps();
         });
     }

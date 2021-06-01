@@ -11,8 +11,8 @@ class UserCourseController extends Controller
 {
     public function index()
     {
-        $user_course = Courseuser::latest()->get();
-        $user_course_category = UserCourseCategory::latest()->get();
+        $user_course = Courseuser::all();
+        $user_course_category = UserCourseCategory::all();
         return view('backend.pages.user_course.index', compact('user_course', 'user_course_category'));
     }
 
@@ -39,7 +39,7 @@ class UserCourseController extends Controller
     public function edit($id)
     {
         $user_course = Courseuser::findOrFail($id);
-        $user_course_category = UserCourseCategory::latest()->get();
+        $user_course_category = UserCourseCategory::all();
         return view('backend.pages.user_course.edit', compact('user_course', 'user_course_category'));
     }
 

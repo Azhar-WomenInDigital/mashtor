@@ -9,7 +9,7 @@ use Session;
 class UserCourseCategoryController extends Controller
 {
     public function index(){
-        $user_course_category = UserCourseCategory::latest()->get();
+        $user_course_category = UserCourseCategory::all()->get();
         return view('backend.pages.user_course_category.index', compact('user_course_category'));
     }
 

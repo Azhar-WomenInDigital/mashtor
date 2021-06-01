@@ -31,4 +31,9 @@ class DashboardController extends Controller
         return view('frontend.pages.profile.invoice');
     }
 
+    public function userCourseInfo(){
+        $users = Auth::user();
+        return view('frontend.pages.profile.course-info', compact('users')); 
+    }
+
 }

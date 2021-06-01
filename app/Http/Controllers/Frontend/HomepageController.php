@@ -340,7 +340,7 @@ class HomepageController extends Controller
     public function userCourseCategory($id)
     {
         $user_course_categories = UserCourseCategory::findOrFail($id);
-        $user_course = Courseuser::where('user_course_category_id', $id)->latest()->get();
+        $user_course = Courseuser::where('user_course_category_id', $id)->get();
         return view('frontend.pages.user-course.user-course-info', compact('user_course_categories', 'user_course'));
     }
 
