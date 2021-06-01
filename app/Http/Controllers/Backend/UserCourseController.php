@@ -33,6 +33,7 @@ class UserCourseController extends Controller
         $user_course->start_time = $request->start_time;
         $user_course->day = $request->day;
         $user_course->save();
+        $this->setSuccess('Course Successfully Saved');
         return redirect('admin/user-course');
     }
 
@@ -60,6 +61,7 @@ class UserCourseController extends Controller
         $user_course->start_time = $request->start_time;
         $user_course->day = $request->day;
         $user_course->save();
+        $this->setSuccess('Course Successfully Updated');
         return redirect('admin/user-course');
     }
 
@@ -67,7 +69,7 @@ class UserCourseController extends Controller
     {
         $user_course = Courseuser::findOrFail($id);
         $user_course->delete();
-        Session::flash('success', 'Successfully Deleted');
+        $this->setSuccess('Course Successfully Deleted!');
         return redirect()->back();
     }
 }

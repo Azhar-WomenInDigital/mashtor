@@ -42,6 +42,7 @@
       <div class="col-12">
             <div class="card-box table-responsive">
                 <!-- Add Category Create Triger -->
+				        @include('backend.partials._message')
                 <button type="button" class="btn btn-dark  waves-effect waves-light mb-col-2 mb-sm-3 mb-md-4" data-toggle="modal" data-target="#category"><i class="zmdi zmdi-plus"></i>Add New Course</button>
                 <h4 class="m-t-0 header-title pb-3">User Course Category <strong>({{ $user_course->count() }})</strong></h4>
                 <table id="responsive-datatable" class="table table-bordered table-bordered dt-responsive nowrap" cellspacing="0" width="100%">

@@ -9,7 +9,7 @@ use Session;
 class UserCourseCategoryController extends Controller
 {
     public function index(){
-        $user_course_category = UserCourseCategory::all()->get();
+        $user_course_category = UserCourseCategory::all();
         return view('backend.pages.user_course_category.index', compact('user_course_category'));
     }
 
@@ -21,7 +21,7 @@ class UserCourseCategoryController extends Controller
         $user_course_category = new UserCourseCategory();
         $user_course_category->user_course_category_name = $request->user_course_category_name;
         $user_course_category->save();
-        Session::flash('success','Successfully Saved');
+        $this->setSuccess('Course Category Successfully Saved');
         return redirect('admin/user-course-category');
     }
 
@@ -37,13 +37,14 @@ class UserCourseCategoryController extends Controller
         $user_course_category = UserCourseCategory::findOrFail($id);
         $user_course_category->user_course_category_name = $request->user_course_category_name;
         $user_course_category->save();
+        $this->setSuccess('Course Category Successfully Updated');
         return redirect('admin/user-course-category');
     }
 
     public function destroy($id){
         $user_course_category = UserCourseCategory::findOrFail($id);
         $user_course_category->delete();
-        Session::flash('success','Successfully Deleted');
+        $this->setSuccess('Course Category Deleted!!');
         return redirect()->back();
     }
 }

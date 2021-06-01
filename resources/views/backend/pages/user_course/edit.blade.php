@@ -27,6 +27,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6">
         <div class="card p-5">
+				  @include('backend.partials._message')
           <form action="{{ url('admin/user-course-update', $user_course->id ) }}" method="POST">
             @csrf
             @method('put')
