@@ -21,7 +21,7 @@
             @foreach ($user_course as $data)
             <div class="form-check pb-sm-3">
               <label class="form-check-label" for="radio1">
-                <input type="radio" class="form-check-input" id="radio1" name="usercourse_id" value="{{ $data->id }}" >{{ $data->user_course_name }}
+                <input type="radio" class="form-check-input" id="radio1" name="courseuser_id" value="{{ $data->id }}" >{{ $data->user_course_name }}
               </label>
             </div>
             @endforeach

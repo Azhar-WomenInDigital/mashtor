@@ -20,11 +20,8 @@ font-size: 4.5rem;
 <div class="col-md-9 text-center">
 	<div class="card">
 		<div class="card-body">
-			
-			
 			<h1 id="head" class="text-center"> Close Account </h1><br>
 			<p  class="text-center">Close your account permanently.</p>
-			
 			<br><br>
 			<p>Close Your Account</p>
 			<p> <span class="text-warning">Warning:</span> If you close your account, you will be unsubscribed from all your 0 courses, and will lose access forever.</p> <br><br>

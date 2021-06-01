@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\UserCourse;
+use App\Models\Courseuser;
 use Illuminate\Database\Eloquent\Model;
 
 class UserCourseCategory extends Model
 {
     protected $guarded = [];
 
-    public function userCourse(){
-        return $this->hasMany(UserCourse::class);
+    public function courseuser()
+    {
+        return $this->hasMany(Courseuser::class);
     }
 }

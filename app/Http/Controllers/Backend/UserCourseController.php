@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\UserCourse;
-use Illuminate\Http\Request;
-use App\Models\UserCourseCategory;
 use App\Http\Controllers\Controller;
+use App\Models\Courseuser;
+use App\Models\UserCourseCategory;
+use Illuminate\Http\Request;
 
 class UserCourseController extends Controller
 {
-    public function index(){
-        $user_course = UserCourse::latest()->get();
+    public function index()
+    {
+        $user_course = Courseuser::latest()->get();
         $user_course_category = UserCourseCategory::latest()->get();
-        return view('backend.pages.user_course.index', compact('user_course','user_course_category'));
+        return view('backend.pages.user_course.index', compact('user_course', 'user_course_category'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $this->validate($request, [
             'user_course_category_id' => 'required',
             'user_course_name' => 'required',
@@ -24,7 +26,7 @@ class UserCourseController extends Controller
             'day' => 'required',
         ]);
 
-        $user_course = new UserCourse();
+        $user_course = new Courseuser();
         $user_course->user_course_name = $request->user_course_name;
         $user_course->user_course_category_id = $request->user_course_category_id;
         $user_course->class_link = $request->class_link;
@@ -34,13 +36,15 @@ class UserCourseController extends Controller
         return redirect('admin/user-course');
     }
 
-    public function edit($id){
-        $user_course = UserCourse::findOrFail($id);
+    public function edit($id)
+    {
+        $user_course = Courseuser::findOrFail($id);
         $user_course_category = UserCourseCategory::latest()->get();
-        return view('backend.pages.user_course.edit', compact('user_course','user_course_category'));
+        return view('backend.pages.user_course.edit', compact('user_course', 'user_course_category'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $this->validate($request, [
             'user_course_category_id' => 'required',
             'user_course_name' => 'required',
@@ -49,7 +53,7 @@ class UserCourseController extends Controller
             'day' => 'required',
         ]);
 
-        $user_course = UserCourse::findOrFail($id);
+        $user_course = Courseuser::findOrFail($id);
         $user_course->user_course_name = $request->user_course_name;
         $user_course->user_course_category_id = $request->user_course_category_id;
         $user_course->class_link = $request->class_link;
@@ -59,10 +63,11 @@ class UserCourseController extends Controller
         return redirect('admin/user-course');
     }
 
-    public function destroy($id){
-        $user_course = UserCourse::findOrFail($id);
+    public function destroy($id)
+    {
+        $user_course = Courseuser::findOrFail($id);
         $user_course->delete();
-        Session::flash('success','Successfully Deleted');
+        Session::flash('success', 'Successfully Deleted');
         return redirect()->back();
     }
 }

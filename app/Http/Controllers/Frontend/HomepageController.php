@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use DB;
-use Auth;
-use Mail;
-use Session;
-use App\User;
-use App\Enrol;
 use App\Courses;
-use App\Metarial;
-use Pusher\Pusher;
 use App\DiscountCode;
+use App\Enrol;
+use App\Http\Controllers\Controller;
 use App\LiveMessageChat;
 use App\Mail\NoticeMail;
-use App\Models\UserCourse;
-use Illuminate\Http\Request;
-use App\Rules\CheckDiscountCode;
+use App\Metarial;
+use App\Models\Courseuser;
 use App\Models\UserCourseCategory;
-use App\Http\Controllers\Controller;
+use App\Rules\CheckDiscountCode;
+use App\User;
+use Auth;
+use DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Mail;
+use Pusher\Pusher;
+use Session;
 
 class HomepageController extends Controller
 {
@@ -340,19 +340,19 @@ class HomepageController extends Controller
     public function userCourseCategory($id)
     {
         $user_course_categories = UserCourseCategory::findOrFail($id);
-        $user_course = UserCourse::where('user_course_category_id', $id)->latest()->get();
+        $user_course = Courseuser::where('user_course_category_id', $id)->latest()->get();
         return view('frontend.pages.user-course.user-course-info', compact('user_course_categories', 'user_course'));
     }
 
     public function selectedUserCourseStore(Request $request)
     {
         $this->validate($request, [
-            'usercourse_id' => 'required',
+            'courseuser_id' => 'required',
             'user_id' => 'required',
         ]);
 
-        $data = DB::table('user_user_course')->insert([
-            'usercourse_id' => $request->usercourse_id,
+        $data = DB::table('courseuser_user')->insert([
+            'courseuser_id' => $request->courseuser_id,
             'user_id' => $request->user_id,
         ]);
         return redirect()->route('home');

@@ -2,11 +2,10 @@
 
 namespace App;
 
-use App\Models\UserCourse;
-use Illuminate\Notifications\Notifiable;
+use App\Models\Courseuser;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -18,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'fullname','number','email','nid','password',
+        'fullname', 'number', 'email', 'nid', 'password',
     ];
 
     /**
@@ -39,15 +38,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function isOnline(){
+    public function isOnline()
+    {
         return Cache::has('user-is-online-' . $this->id);
     }
 
-    public function userCourseSubject(){
+    public function userCourseSubject()
+    {
         return $this->belongsTo('App\User');
     }
 
-    public function userCourse(){
-        return $this->hasMany(UserCourse::class, 'user_user_course', 'usercourse_id', 'user_id');
+    public function courseuser()
+    {
+        return $this->belongsToMany(Courseuser::class);
     }
 }
