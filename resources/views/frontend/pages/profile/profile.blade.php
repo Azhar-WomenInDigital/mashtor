@@ -36,10 +36,6 @@ font-size: 4.5rem;
       <input type="text" name="number" class="form-control" value="{{Auth::user()->number}}">
     </div>
     <div class="form-group">
-      <label for="course-name">Course Name</label>
-      <input type="text" disabled name="course_name" class="form-control" value="{{Auth::user()->course_name}}">
-    </div>
-    <div class="form-group">
       <label for="">Upload Image</label>
       <input type="file" name="image" class="form-control">
     </div>
