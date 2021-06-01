@@ -44,12 +44,12 @@
                     </ul>
                 </li>
 
-                <li class="has_sub">
+                <!-- <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-widgets"></i> <span> Student Suggesion </span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled">
                         <li><a href="{{url('admin/suggesion')}}">Suggesion List</a></li>
                     </ul>
-                </li>
+                </li> -->
 
                 <li class="has_sub">
                     <a href="{{url('admin/metarials')}}" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i><span> Metarials </span> </a>
