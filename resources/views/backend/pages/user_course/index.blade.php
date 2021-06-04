@@ -54,6 +54,9 @@
                         <th>Class Link</th>
                         <th>Start Time</th>
                         <th>Day</th>
+                        <th>Class Link 2</th>
+                        <th>Start Time 2</th>
+                        <th>Day 2</th>
                         <th>Lat Update</th>
                         <th>Action</th>
                     </tr>
@@ -67,6 +70,9 @@
                         <td>{{ $data->class_link }}</td>
                         <td>{{ $data->start_time }}</td>
                         <td>{{ $data->day }}</td>
+                        <td>{{ $data->class_link_2 }}</td>
+                        <td>{{ $data->start_time_2 }}</td>
+                        <td>{{ $data->day_2 }}</td>
                         <td>{{ $data->updated_at }}</td>
                         <td class="icon-list-demo text-center">
                           <a href="{{ url('admin/user-course-edit', $data->id) }}"><i class="zmdi zmdi-edit zmdi-sm"></i></a>
@@ -125,7 +131,19 @@
           <div class="form-group">
             <label for="day">Day</label>
             <input type="text" class="form-control" id="day" name="day">
-        </div>
+          </div>
+          <div class="form-group">
+            <label for="class-link-2">Class Link 2</label>
+            <input type="text" class="form-control" id="class-link-2" name="class_link_2">
+          </div>
+          <div class="form-group">
+            <label for="start-time-2">Start Time 2</label>
+            <input type="text" class="form-control" id="start-time-2" name="start_time_2">
+          </div>
+          <div class="form-group">
+            <label for="day-2">Day 2</label>
+            <input type="text" class="form-control" id="day-2" name="day_2">
+          </div>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-success waves-effect waves-light">Save</button>

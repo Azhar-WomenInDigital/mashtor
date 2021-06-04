@@ -28,6 +28,9 @@ font-size: 4.5rem;
 					<th>Class Link</th>
 					<th>Start Time</th>
 					<th>Day</th>
+					<th>Class Link 2nd</th>
+					<th>Start Time 2nd</th>
+					<th>Day 2nd</th>
 				  </tr>
 				</thead>
 				<tbody>
@@ -37,6 +40,9 @@ font-size: 4.5rem;
 						<td><a href="{{ $item->class_link }}" target="blank">Click For Class Link</a></td>
 						<td>{{ $item->start_time }}</td>
 						<td>{{ $item->day }}</td>
+						<td><a href="{{ $item->class_link_2 }}" target="blank">Click For 2nd Class Link</a></td>
+						<td>{{ $item->start_time_2 }}</td>
+						<td>{{ $item->day_2 }}</td>
 					</tr>
 					@endforeach
 				</tbody>

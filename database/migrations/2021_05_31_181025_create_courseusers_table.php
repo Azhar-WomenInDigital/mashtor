@@ -20,6 +20,9 @@ class CreateCourseusersTable extends Migration
             $table->string('class_link')->nullable();
             $table->string('start_time')->nullable();
             $table->string('day')->nullable();
+            $table->string('class_link_2')->nullable();
+            $table->string('start_time_2')->nullable();
+            $table->string('day_2')->nullable();
             $table->timestamps();
         });
     }

@@ -24,6 +24,9 @@ class UserCourseController extends Controller
             'class_link' => 'required',
             'start_time' => 'required',
             'day' => 'required',
+            'class_link_2' => 'required',
+            'start_time_2' => 'required',
+            'day_2' => 'required',
         ]);
 
         $user_course = new Courseuser();
@@ -32,6 +35,9 @@ class UserCourseController extends Controller
         $user_course->class_link = $request->class_link;
         $user_course->start_time = $request->start_time;
         $user_course->day = $request->day;
+        $user_course->class_link_2 = $request->class_link_2;
+        $user_course->start_time_2 = $request->start_time_2;
+        $user_course->day_2 = $request->day_2;
         $user_course->save();
         $this->setSuccess('Course Successfully Saved');
         return redirect('admin/user-course');
@@ -52,6 +58,9 @@ class UserCourseController extends Controller
             'class_link' => 'required',
             'start_time' => 'required',
             'day' => 'required',
+            'class_link_2' => 'required',
+            'start_time_2' => 'required',
+            'day_2' => 'required',
         ]);
 
         $user_course = Courseuser::findOrFail($id);
@@ -60,6 +69,9 @@ class UserCourseController extends Controller
         $user_course->class_link = $request->class_link;
         $user_course->start_time = $request->start_time;
         $user_course->day = $request->day;
+        $user_course->class_link_2 = $request->class_link_2;
+        $user_course->start_time_2 = $request->start_time_2;
+        $user_course->day_2 = $request->day_2;
         $user_course->save();
         $this->setSuccess('Course Successfully Updated');
         return redirect('admin/user-course');

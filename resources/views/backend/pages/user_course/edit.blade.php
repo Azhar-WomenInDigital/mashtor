@@ -57,6 +57,18 @@
                 <label for="day">Day</label>
                 <input type="text" class="form-control" id="day" value="{{ $user_course->day }}" name="day">
               </div>
+              <div class="form-group">
+                <label for="class-link-2">Class Link 2</label>
+                <input type="text" class="form-control" id="class-link-2" value="{{ $user_course->class_link_2 }}" name="class_link_2">
+              </div>
+              <div class="form-group">
+                <label for="start-time-2">Start Time 2</label>
+                <input type="text" class="form-control" id="start-time-2" value="{{ $user_course->start_time_2 }}" name="start_time_2">
+              </div>
+              <div class="form-group">
+                <label for="day-2">Day 2</label>
+                <input type="text" class="form-control" id="day-2" value="{{ $user_course->day_2 }}" name="day_2">
+              </div>
             <button type="submit" class="btn btn-success waves-effect waves-light">Update</button>
           </form>
         </div>

@@ -1,7 +1,7 @@
 
 <!--Page Title-->
 <div class="section  bg-off-white pb-5 pt-5">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
                 <div class="card">
