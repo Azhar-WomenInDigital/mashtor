@@ -109,6 +109,8 @@ class MessageController extends Controller
 
     public function msg(Request $request){
         $msg = new Message;
-        $msg->messages
+        $msg->messages = $request->message;
+        $msg->save();
+        return back();
     }
 }
