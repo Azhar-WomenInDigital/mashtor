@@ -7,14 +7,14 @@ use Psr\Log\LoggerAwareTrait;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 
-class Pusher implements LoggerAwareInterface
+class Pusher implements LoggerAwareInterface, PusherInterface
 {
     use LoggerAwareTrait;
 
     /**
      * @var string Version
      */
-    public static $VERSION = '3.4.1';
+    public static $VERSION = '5.0.3';
 
     /**
      * @var null|PusherCrypto
@@ -27,10 +27,9 @@ class Pusher implements LoggerAwareInterface
     private $settings = array(
         'scheme'                => 'http',
         'port'                  => 80,
+        'path'                  => '',
         'timeout'               => 30,
-        'debug'                 => false,
         'curl_options'          => array(),
-        'encryption_master_key' => '',
     );
 
     /**
@@ -40,14 +39,12 @@ class Pusher implements LoggerAwareInterface
 
     /**
      * Initializes a new Pusher instance with key, secret, app ID and channel.
-     * You can optionally turn on debugging for all requests by setting debug to true.
      *
      * @param string $auth_key
      * @param string $secret
      * @param int    $app_id
      * @param array  $options  [optional]
      *                         Options to configure the Pusher instance.
-     *                         Was previously a debug flag. Legacy support for this exists if a boolean is passed.
      *                         scheme - e.g. http or https
      *                         host - the host e.g. api.pusherapp.com. No trailing forward slash.
      *                         port - the http port
@@ -55,11 +52,9 @@ class Pusher implements LoggerAwareInterface
      *                         useTLS - quick option to use scheme of https and port 443.
      *                         encrypted - deprecated; renamed to `useTLS`.
      *                         cluster - cluster name to connect to.
-     *                         encryption_master_key - a 32 char long key. This key, along with the channel name, are used to derive per-channel encryption keys. Per-channel keys are used encrypt event data on encrypted channels.
-     *                         debug - (default `false`) if `true`, every `trigger()` and `triggerBatch()` call will return a `$response` object, useful for logging/inspection purposes.
+     *                         encryption_master_key - deprecated; use `encryption_master_key_base64`
+     *                         encryption_master_key_base64 - a 32 byte key, encoded as base64. This key, along with the channel name, are used to derive per-channel encryption keys. Per-channel keys are used to encrypt event data on encrypted channels.
      *                         curl_options - wrapper for curl_setopt, more here: http://php.net/manual/en/function.curl-setopt.php
-     *                         notification_host - host to connect to for native notifications.
-     *                         notification_scheme - scheme for the notification_host.
      * @param string $host     [optional] - deprecated
      * @param int    $port     [optional] - deprecated
      * @param int    $timeout  [optional] - deprecated
@@ -69,13 +64,6 @@ class Pusher implements LoggerAwareInterface
     public function __construct($auth_key, $secret, $app_id, $options = array(), $host = null, $port = null, $timeout = null)
     {
         $this->check_compatibility();
-
-        /* Start backward compatibility with old constructor **/
-        if (is_bool($options) === true) {
-            $options = array(
-                'debug' => $options,
-            );
-        }
 
         if (!is_null($host)) {
             $match = null;
@@ -87,10 +75,12 @@ class Pusher implements LoggerAwareInterface
             }
 
             $this->settings['host'] = $host;
+            $this->settings['path'] = '';
 
             $this->log('Legacy $host parameter provided: {scheme} host: {host}', array(
                 'scheme' => $this->settings['scheme'],
                 'host'   => $this->settings['host'],
+                'path'   => $this->settings['path'],
             ));
         }
 
@@ -132,20 +122,6 @@ class Pusher implements LoggerAwareInterface
             }
         }
 
-        // Set the native notification host
-        if (isset($options['notification_host'])) {
-            $this->settings['notification_host'] = $options['notification_host'];
-        } else {
-            $this->settings['notification_host'] = 'nativepush-cluster1.pusher.com';
-        }
-
-        // Set scheme for native notifications
-        if (isset($options['notification_scheme'])) {
-            $this->settings['notification_scheme'] = $options['notification_scheme'];
-        } else {
-            $this->settings['notification_scheme'] = 'https';
-        }
-
         // handle the case when 'host' and 'cluster' are specified in the options.
         if (!array_key_exists('host', $this->settings)) {
             if (array_key_exists('host', $options)) {
@@ -158,11 +134,21 @@ class Pusher implements LoggerAwareInterface
         }
 
         // ensure host doesn't have a scheme prefix
-        $this->settings['host'] =
-        preg_replace('/http[s]?\:\/\//', '', $this->settings['host'], 1);
+        $this->settings['host'] = preg_replace('/http[s]?\:\/\//', '', $this->settings['host'], 1);
 
-        if ($this->settings['encryption_master_key'] != '') {
-            $this->crypto = new PusherCrypto($this->settings['encryption_master_key']);
+        if (!array_key_exists('encryption_master_key', $options)) {
+            $options['encryption_master_key'] = '';
+        }
+        if (!array_key_exists('encryption_master_key_base64', $options)) {
+            $options['encryption_master_key_base64'] = '';
+        }
+
+        if ($options['encryption_master_key'] != '' or $options['encryption_master_key_base64'] != '') {
+            $parsedKey = PusherCrypto::parse_master_key(
+                $options['encryption_master_key'],
+                $options['encryption_master_key_base64']
+            );
+            $this->crypto = new PusherCrypto($parsedKey);
         }
     }
 
@@ -297,8 +283,8 @@ class Pusher implements LoggerAwareInterface
     /**
      * Utility function used to create the curl object with common settings.
      *
-     * @param string            $domain
-     * @param string            $s_url
+     * @param string            $url_prefix
+     * @param string            $path
      * @param string [optional] $request_method
      * @param array [optional]  $query_params
      *
@@ -306,18 +292,18 @@ class Pusher implements LoggerAwareInterface
      *
      * @return resource
      */
-    private function create_curl($domain, $s_url, $request_method = 'GET', $query_params = array())
+    private function create_curl($url_prefix, $path, $request_method = 'GET', $query_params = array())
     {
         // Create the signed signature...
         $signed_query = self::build_auth_query_string(
             $this->settings['auth_key'],
             $this->settings['secret'],
             $request_method,
-            $s_url,
+            $path,
             $query_params
         );
 
-        $full_url = $domain.$s_url.'?'.$signed_query;
+        $full_url = $url_prefix.$path.'?'.$signed_query;
 
         $this->log('create_curl( {full_url} )', array('full_url' => $full_url));
 
@@ -390,23 +376,13 @@ class Pusher implements LoggerAwareInterface
     }
 
     /**
-     * Build the notification domain.
+     * Build the Channels url prefix.
      *
      * @return string
      */
-    private function notification_domain()
+    private function channels_url_prefix()
     {
-        return $this->settings['notification_scheme'].'://'.$this->settings['notification_host'];
-    }
-
-    /**
-     * Build the Channels domain.
-     *
-     * @return string
-     */
-    private function channels_domain()
-    {
-        return $this->settings['scheme'].'://'.$this->settings['host'].':'.$this->settings['port'];
+        return $this->settings['scheme'].'://'.$this->settings['host'].':'.$this->settings['port'].$this->settings['path'];
     }
 
     /**
@@ -422,9 +398,15 @@ class Pusher implements LoggerAwareInterface
      *
      * @return string
      */
-    public static function build_auth_query_string($auth_key, $auth_secret, $request_method, $request_path,
-    $query_params = array(), $auth_version = '1.0', $auth_timestamp = null)
-    {
+    public static function build_auth_query_string(
+        $auth_key,
+        $auth_secret,
+        $request_method,
+        $request_path,
+        $query_params = array(),
+        $auth_version = '1.0',
+        $auth_timestamp = null
+    ) {
         $params = array();
         $params['auth_key'] = $auth_key;
         $params['auth_timestamp'] = (is_null($auth_timestamp) ? time() : $auth_timestamp);
@@ -480,22 +462,24 @@ class Pusher implements LoggerAwareInterface
      * @param array|string $channels        A channel name or an array of channel names to publish the event on.
      * @param string       $event
      * @param mixed        $data            Event data
-     * @param string|null  $socket_id       [optional]
-     * @param bool         $debug           [optional]
+     * @param array        $params          [optional]
      * @param bool         $already_encoded [optional]
      *
-     * @throws PusherException Throws exception if $channels is an array of size 101 or above or $socket_id is invalid
+     * @throws PusherException   Throws PusherException if $channels is an array of size 101 or above or $socket_id is invalid
+     * @throws ApiErrorException Throws ApiErrorException if the Channels HTTP API responds with an error
      *
-     * @return bool|array
+     * @return object
      */
-    public function trigger($channels, $event, $data, $socket_id = null, $debug = false, $already_encoded = false)
+    public function trigger($channels, $event, $data, $params = array(), $already_encoded = false)
     {
         if (is_string($channels) === true) {
             $channels = array($channels);
         }
 
         $this->validate_channels($channels);
-        $this->validate_socket_id($socket_id);
+        if (isset($params['socket_id'])) {
+            $this->validate_socket_id($params['socket_id']);
+        }
 
         $has_encrypted_channel = false;
         foreach ($channels as $chan) {
@@ -517,7 +501,7 @@ class Pusher implements LoggerAwareInterface
 
         $query_params = array();
 
-        $s_url = $this->settings['base_path'].'/events';
+        $path = $this->settings['base_path'].'/events';
 
         // json_encode might return false on failure
         if (!$data_encoded) {
@@ -531,15 +515,13 @@ class Pusher implements LoggerAwareInterface
         $post_params['data'] = $data_encoded;
         $post_params['channels'] = array_values($channels);
 
-        if ($socket_id !== null) {
-            $post_params['socket_id'] = $socket_id;
-        }
+        $all_params = array_merge($post_params, $params);
 
-        $post_value = json_encode($post_params);
+        $post_value = json_encode($all_params);
 
         $query_params['body_md5'] = md5($post_value);
 
-        $ch = $this->create_curl($this->channels_domain(), $s_url, 'POST', $query_params);
+        $ch = $this->create_curl($this->channels_url_prefix(), $path, 'POST', $query_params);
 
         $this->log('trigger POST: {post_value}', compact('post_value'));
 
@@ -547,29 +529,31 @@ class Pusher implements LoggerAwareInterface
 
         $response = $this->exec_curl($ch);
 
-        if ($debug === true || $this->settings['debug'] === true) {
-            return $response;
+        if ($response['status'] !== 200) {
+            throw new ApiErrorException($response['body'], $response['status']);
         }
 
-        if ($response['status'] === 200) {
-            return true;
+        $result = json_decode($response['body']);
+
+        if (property_exists($result, 'channels')) {
+            $result->channels = get_object_vars($result->channels);
         }
 
-        return false;
+        return $result;
     }
 
     /**
      * Trigger multiple events at the same time.
      *
      * @param array $batch           [optional] An array of events to send
-     * @param bool  $debug           [optional]
      * @param bool  $already_encoded [optional]
      *
-     * @throws PusherException Throws exception if curl wasn't initialized correctly
+     * @throws PusherException   Throws exception if curl wasn't initialized correctly
+     * @throws ApiErrorException Throws ApiErrorException if the Channels HTTP API responds with an error
      *
-     * @return array|bool|string
+     * @return object
      */
-    public function triggerBatch($batch = array(), $debug = false, $already_encoded = false)
+    public function triggerBatch($batch = array(), $already_encoded = false)
     {
         foreach ($batch as $key => $event) {
             $this->validate_channel($event['channel']);
@@ -595,9 +579,9 @@ class Pusher implements LoggerAwareInterface
 
         $query_params = array();
         $query_params['body_md5'] = md5($post_value);
-        $s_url = $this->settings['base_path'].'/batch_events';
+        $path = $this->settings['base_path'].'/batch_events';
 
-        $ch = $this->create_curl($this->channels_domain(), $s_url, 'POST', $query_params);
+        $ch = $this->create_curl($this->channels_url_prefix(), $path, 'POST', $query_params);
 
         $this->log('trigger POST: {post_value}', compact('post_value'));
 
@@ -605,15 +589,11 @@ class Pusher implements LoggerAwareInterface
 
         $response = $this->exec_curl($ch);
 
-        if ($debug === true || $this->settings['debug'] === true) {
-            return $response;
+        if ($response['status'] !== 200) {
+            throw new ApiErrorException($response['body'], $response['status']);
         }
 
-        if ($response['status'] === 200) {
-            return true;
-        }
-
-        return false;
+        return json_decode($response['body']);
     }
 
     /**
@@ -622,21 +602,16 @@ class Pusher implements LoggerAwareInterface
      * @param string $channel The name of the channel
      * @param array  $params  Additional parameters for the query e.g. $params = array( 'info' => 'connection_count' )
      *
-     * @throws PusherException If $channel is invalid or if curl wasn't initialized correctly
+     * @throws PusherException   If $channel is invalid or if curl wasn't initialized correctly
+     * @throws ApiErrorException Throws ApiErrorException if the Channels HTTP API responds with an error
      *
-     * @return bool|object
+     * @return object
      */
     public function get_channel_info($channel, $params = array())
     {
         $this->validate_channel($channel);
 
-        $response = $this->get('/channels/'.$channel, $params);
-
-        if ($response['status'] === 200) {
-            return json_decode($response['body']);
-        }
-
-        return false;
+        return $this->get('/channels/'.$channel, $params);
     }
 
     /**
@@ -644,22 +619,18 @@ class Pusher implements LoggerAwareInterface
      *
      * @param array $params Additional parameters for the query e.g. $params = array( 'info' => 'connection_count' )
      *
-     * @throws PusherException Throws exception if curl wasn't initialized correctly
+     * @throws PusherException   Throws exception if curl wasn't initialized correctly
+     * @throws ApiErrorException Throws ApiErrorException if the Channels HTTP API responds with an error
      *
-     * @return array|bool
+     * @return object
      */
     public function get_channels($params = array())
     {
-        $response = $this->get('/channels', $params);
+        $result = $this->get('/channels', $params);
 
-        if ($response['status'] === 200) {
-            $response = json_decode($response['body']);
-            $response->channels = get_object_vars($response->channels);
+        $result->channels = get_object_vars($result->channels);
 
-            return $response;
-        }
-
-        return false;
+        return $result;
     }
 
     /**
@@ -667,47 +638,42 @@ class Pusher implements LoggerAwareInterface
      *
      * @param string $channel The name of the channel
      *
-     * @throws PusherException Throws exception if curl wasn't initialized correctly
+     * @throws PusherException   Throws exception if curl wasn't initialized correctly
+     * @throws ApiErrorException Throws ApiErrorException if the Channels HTTP API responds with an error
      *
-     * @return array|bool
+     * @return object
      */
     public function get_users_info($channel)
     {
-        $response = $this->get('/channels/'.$channel.'/users');
-
-        if ($response['status'] === 200) {
-            return json_decode($response['body']);
-        }
-
-        return false;
+        return $this->get('/channels/'.$channel.'/users');
     }
 
     /**
      * GET arbitrary REST API resource using a synchronous http client.
      * All request signing is handled automatically.
      *
-     * @param string $path   Path excluding /apps/APP_ID
-     * @param array  $params API params (see http://pusher.com/docs/rest_api)
+     * @param string $path        Path excluding /apps/APP_ID
+     * @param array  $params      API params (see http://pusher.com/docs/rest_api)
+     * @param bool   $associative When true, return the response body as an associative array, else return as an object
      *
-     * @throws PusherException Throws exception if curl wasn't initialized correctly
+     * @throws PusherException   Throws exception if curl wasn't initialized correctly
+     * @throws ApiErrorException Throws ApiErrorException if the Channels HTTP API responds with an error
      *
-     * @return array|bool See Pusher API docs
+     * @return mixed See Pusher API docs
      */
-    public function get($path, $params = array())
+    public function get($path, $params = array(), $associative = false)
     {
-        $s_url = $this->settings['base_path'].$path;
+        $path = $this->settings['base_path'].$path;
 
-        $ch = $this->create_curl($this->channels_domain(), $s_url, 'GET', $params);
+        $ch = $this->create_curl($this->channels_url_prefix(), $path, 'GET', $params);
 
         $response = $this->exec_curl($ch);
 
-        if ($response['status'] === 200) {
-            $response['result'] = json_decode($response['body'], true);
-
-            return $response;
+        if ($response['status'] !== 200) {
+            throw new ApiErrorException($response['body'], $response['status']);
         }
 
-        return false;
+        return json_decode($response['body'], $associative);
     }
 
     /**
@@ -772,62 +738,14 @@ class Pusher implements LoggerAwareInterface
     }
 
     /**
-     * Send a native notification via the Push Notifications Api.
-     *
-     * @param array $interests
-     * @param array $data
-     * @param bool  $debug
-     *
-     * @throws PusherException If validation fails
-     *
-     * @return array|bool|string
-     */
-    public function notify($interests, $data = array(), $debug = false)
-    {
-        $query_params = array();
-
-        if (is_string($interests)) {
-            $this->log('->notify received string interests "{interests}" Converting to array.', compact('interests'));
-            $interests = array($interests);
-        }
-
-        if (count($interests) === 0) {
-            throw new PusherException('$interests array must not be empty');
-        }
-
-        $data['interests'] = $interests;
-
-        $post_value = json_encode($data);
-
-        $query_params['body_md5'] = md5($post_value);
-
-        $notification_path = '/server_api/v1'.$this->settings['base_path'].'/notifications';
-        $ch = $this->create_curl($this->notification_domain(), $notification_path, 'POST', $query_params);
-
-        $this->log('trigger POST (Native notifications): {post_value}', compact('post_value'));
-
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_value);
-
-        $response = $this->exec_curl($ch);
-
-        if ($response['status'] === 202 && $debug === false) {
-            return true;
-        }
-
-        if ($debug === true || $this->settings['debug'] === true) {
-            return $response;
-        }
-
-        return false;
-    }
-
-    /**
      * Verify that a webhook actually came from Pusher, decrypts any encrypted events, and marshals them into a PHP object.
      *
      * @param array  $headers a array of headers from the request (for example, from getallheaders())
      * @param string $body    the body of the request (for example, from file_get_contents('php://input'))
      *
-     * @return array marshalled object with the properties time_ms (an int) and events (an array of event objects)
+     * @throws PusherException
+     *
+     * @return Webhook marshalled object with the properties time_ms (an int) and events (an array of event objects)
      */
     public function webhook($headers, $body)
     {
@@ -846,7 +764,7 @@ class Pusher implements LoggerAwareInterface
                     }
                     array_push($decoded_events, $decryptedEvent);
                 } else {
-                    $this->log('Got an encrypted webhook event payload, but no encryption_master_key specified. Ignoring.', null, LogLevel::WARNING);
+                    $this->log('Got an encrypted webhook event payload, but no master key specified. Ignoring.', null, LogLevel::WARNING);
                     continue;
                 }
             } else {
