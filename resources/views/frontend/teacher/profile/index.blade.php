@@ -22,9 +22,6 @@
                             <h6>Become a Mashtor with these simple steps:</h6>
                             <br>
                             <ul>
-                                <?php
-
-                                ?>
                                 <li class="<?php if(isset($user_basic_info)){ echo "text-danger fas fa-check";}?>"> 1. Update Your Profile</li>
 
                                 <li class="<?php if(isset($user_education_info_check->id)){ echo "text-danger fas fa-check";}?>"> 2. Add Your Education</li>

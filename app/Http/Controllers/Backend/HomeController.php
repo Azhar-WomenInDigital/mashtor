@@ -56,7 +56,7 @@ $data['total_tutor'] = User::where('become_a_tutor',1)->count();
         $userss_id = $request->user_id;
     
         
-             $user = DB::table('users')->where('id', $userss_id)->update(array('status' => 1));  
+            $user = DB::table('users')->where('id', $userss_id)->update(array('status' => 1));  
 
           
      
