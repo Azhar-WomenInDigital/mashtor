@@ -344,6 +344,21 @@ class HomepageController extends Controller
         return view('frontend.pages.user-course.user-course-info', compact('user_course_categories', 'user_course'));
     }
 
+    public function studentCourseCategory($id)
+    {
+        $student_course_categories = UserCourseCategory::findOrFail($id);
+        $student_course = Courseuser::where('user_course_category_id', $id)->get();
+        return view('frontend.pages.student-course.student-course', compact('student_course_categories', 'student_course'));
+    }
+    // public function studentList($id)
+    // {
+    //     $student = DB::table('courseuser_user')->get();
+
+    //     return view('frontend.pages.student-course.student-list', compact('student'));
+    // }
+
+
+
     public function selectedUserCourseStore(Request $request)
     {
         $this->validate($request, [

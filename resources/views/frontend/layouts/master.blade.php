@@ -73,8 +73,6 @@
                   <a class="dropdown-item" href="{{url('professinal/courses')}}">Professinal Traning Courses</a> -->                
                 </div>
               </li>
-
-
               <li class="nav-item dropdown  navig-link">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">   
                  Choose Course
@@ -92,30 +90,37 @@
                   ?>
                 </div>
               </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-             
               <li class="nav-item {{ request()->is('/teacher/find-tutor') ? 'active' : '' }}  navig-link">
                 <a class="nav-link"  href="{{url('teacher/find-tutor')}}">Find Mashtor</a>
               </li>
-              <li class="nav-item {{ request()->is('/live-class') ? 'active' : '' }}  navig-link">
+              {{-- <li class="nav-item {{ request()->is('/live-class') ? 'active' : '' }}  navig-link">
                 <a class="nav-link"  href="{{url('live-class')}}">Demo <span class="pulse"></span></a>
+              </li> --}}
+
+              <li class="nav-item dropdown  navig-link">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">   
+                 Students
+                </a>
+                <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
+                  <?php
+                    $student_course_categories = DB::table('user_course_categories')->get();
+                    if (isset($student_course_categories) && !empty($student_course_categories)) {
+                    foreach ($student_course_categories as  $student_course_category) {
+                    ?>
+                    <a class="dropdown-item" href="{{ url('student-course-category', $student_course_category->id) }}">{{$student_course_category->user_course_category_name}}</a>
+                    <?php
+                    }
+                  } 
+                  ?>
+                </div>
               </li>
+
+
+
+
+
+
+
               <li class="nav-item {{ request()->is('/teacher/become-a-teacher') ? 'active' : '' }}  navig-link">
                 <a class="nav-link btn btn-danger wid-bg-red wid-bg-red-hover text-white" href="{{url('/teacher/become-a-teacher')}}">Become  a mashtor</a>
               </li>

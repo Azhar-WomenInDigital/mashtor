@@ -57,6 +57,10 @@ Route::group(['namespace' => 'Frontend'], function () {
     // Select Course Category
     Route::get('user-course-category/{id}', 'HomepageController@userCourseCategory');
     Route::post('selected-user-course-store', 'HomepageController@selectedUserCourseStore')->name('selected.user.course.store');
+    Route::get('student-course-category/{id}', 'HomepageController@studentCourseCategory');
+    // Route::get('student-list/{id}', 'HomepageController@studentList');
+
+
 
 
     Route::get('teacher/find-tutor', 'Teacher\TeacherController@findTutor');
