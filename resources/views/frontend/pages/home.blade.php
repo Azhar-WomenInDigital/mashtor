@@ -144,10 +144,10 @@
       <!-- <div class="col-md-4"> -->
       <div class="item single-tutor">
         <div class="card">
-          <a href="{{url('teacher/tutor-details',$tutor->user_id)}}" class="text-danger" style="text-decoration: none;">
+          <a href="{{url('teacher/tutor-details',$tutor->user_id)}}" style="text-decoration: none;">
             <?php echo "<img src='".asset($tutor->image)."' class='' style='height:300px;width:100%;object-fit:cover;object-position:center center' alt=''>"; ?>
             <div class="card-body text-center">
-              <h5 class="">{{$tutor->fullname}}</h5>
+              <h5 class="text-warning">{{$tutor->fullname}}</h5>
               <!-- <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -262,14 +262,14 @@
     <div class="row">
       <div class="col-lg-6 offset-lg-6 col-sm-12 col-xs-12 white-bg" style="">
         <div class="for-japanes-learner">
-          <h1>For Bangla Learners</h1> <br>
+          <h1 class="text-warning">For Bangla Learners</h1> <br>
           <ul>
             <li> <span><i class="fas fa-check"></i></span> Talk in Bangladeshi with people who live in Bangladesh</li>
             <li> <span><i class="fas fa-check"></i></span>Learn seniors' actual experience and knowledge outside textbooks</li>
             <li> <span><i class="fas fa-check"></i></span>Ask questions for your dream to success</li>
             <li> <span><i class="fas fa-check"></i></span>Also available for universities and language schools</li>
           </ul>
-          <a href="#" class="btn btn-danger">For Bangla Learners</a>
+          <a href="#" class="btn btn-warning text-white">For Bangla Learners</a>
         </div>
       </div>
     </div>

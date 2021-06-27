@@ -8,7 +8,7 @@
                 <div class="card-box mb-0">
                     <div class="text-center m-t-20">
                         <a href="#" class="logo">
-                            <img src="{{url('frontend/Logo.png')}}"/>
+                            <img src="{{url('http://mashtor.com/frontend/assets/imgs/WID%20TECH%20School.png')}}" class="img-fluid" width="70px" height="70px">
                             <!-- <span>Wid</span> -->
                         </a>
                     </div>
@@ -61,7 +61,7 @@
 
                             <div class="form-group text-center row m-t-10">
                                 <div class="col-12">
-                                    <button class="btn btn-success btn-block waves-effect waves-light" type="submit" style="background: #C31326 !important;">Log In</button>
+                                    <button class="btn btn-dark btn-block waves-effect waves-light" type="submit">Log In</button>
 
                                 </div>
                             </div>

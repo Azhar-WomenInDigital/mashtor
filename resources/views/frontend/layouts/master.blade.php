@@ -42,7 +42,7 @@
   </head>
   <body class="cnt-home " id="app">
     <header class="">
-      <nav class="navbar navbar-expand-lg navbar-light" id="navbar" style="background:#FFD4F0;">
+      <nav class="navbar navbar-expand-lg navbar-light" id="navbar" style="background:#FFB317;">
         <div class="container-fluid">
           <a class="navbar-brand mashtor-logo" href="{{url('/')}}">
             <img src="{{url('frontend/assets/imgs/WID TECH School.png')}}" alt="" class="img-fluid logo">
@@ -122,7 +122,7 @@
 
 
               <li class="nav-item {{ request()->is('/teacher/become-a-teacher') ? 'active' : '' }}  navig-link">
-                <a class="nav-link btn btn-danger wid-bg-red wid-bg-red-hover text-white" href="{{url('/teacher/become-a-teacher')}}">Become  a mashtor</a>
+                <a class="nav-link btn btn-dark text-white" href="{{url('/teacher/become-a-teacher')}}">Become  a mashtor</a>
               </li>
               <!-- <li class="nav-item {{ request()->is('/live-chat') ? 'active' : '' }}">
                 <a class="nav-link" href="{{url('/live-chat')}}">Live Chat</a>

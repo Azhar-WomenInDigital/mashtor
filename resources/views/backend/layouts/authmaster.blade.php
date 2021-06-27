@@ -11,7 +11,7 @@
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- App title -->
-        <title>Wid - Login</title>
+        <title>Mashtor - Admin | Login</title>
 
         <!-- Bootstrap CSS -->
         <link href="{{url('backend/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
@@ -21,6 +21,11 @@
 
         <!-- Modernizr js -->
         <script src="{{url('backend/js/modernizr.min.js')}}"></script>
+        <style>
+            .account-pages{
+                background: #FFB317;
+            }
+        </style>
 
     </head>
 

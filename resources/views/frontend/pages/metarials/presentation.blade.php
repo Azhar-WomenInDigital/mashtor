@@ -39,6 +39,12 @@
                 font-size: 1rem;
                 padding: 0px 10px;
             }
+            .navbar-light .navbar-nav .nav-link {
+                color: rgb(255, 255, 255);
+            }
+            .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+                color: rgba(236, 236, 236);
+            }
             header{
                 position: relative;
                 z-index: 999;
@@ -60,7 +66,7 @@
 
     <body>
          <header class="">
-      <nav class="navbar navbar-expand-lg navbar-light" id="navbar" style="background:#FFD4F0;">
+      <nav class="navbar navbar-expand-lg navbar-light" id="navbar" style="background: #FFB317">
         <div class="container-fluid">
           <a class="navbar-brand" href="{{url('/')}}">
             <img src="{{url('frontend/assets/imgs/WID TECH School.png')}}" alt="" class="img-fluid logo">
