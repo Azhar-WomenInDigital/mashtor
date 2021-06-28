@@ -29,12 +29,12 @@
 <?php
       if(Auth::user()->become_a_tutor == 1){
     ?>  
-  <a href="{{url('teacher/become-a-teacher')}}" class="btn btn-danger">Mashtor Dashboard</a>
+  <a href="{{url('teacher/become-a-teacher')}}" class="btn btn-warning text-white">Mashtor Dashboard</a>
 <?php }else{ ?>
-<a href="{{url('teacher/become-a-teacher')}}" class="btn btn-danger">Became a Teacher</a>
+<a href="{{url('teacher/become-a-teacher')}}" class="btn btn-warning text-white">Became a Teacher</a>
 <?php } ?>
-  <a href="{{url('teacher/find-tutor')}}" class="btn btn-danger">Find Teacher</a>
-  <a href="{{url('professinal/courses')}}" class="btn btn-danger">Find Course</a>
+  <a href="{{url('teacher/find-tutor')}}" class="btn btn-warning text-white">Find Teacher</a>
+  <a href="{{url('professinal/courses')}}" class="btn btn-warning text-white">Find Course</a>
   <br><br>
   <div class="container">
   <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['corechart']}]}"></script>
@@ -47,7 +47,7 @@
 
 </p> --}}
     {{-- <a href="{{ url('user-course-info', $user) }}">Selected Course</a> --}}
-    <h3 class="text-center text-danger">Enroll History</h3>
+    <h3 class="text-center text-warning">Enroll History</h3>
 <hr>
 <?php
   if(isset($enroll_courses) && !empty($enroll_courses)){     

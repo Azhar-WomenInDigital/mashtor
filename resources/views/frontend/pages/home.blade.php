@@ -6,7 +6,7 @@
     max-width: 680px;
     margin: 1.75rem auto;
   }
-  </style>
+</style>
 @endsection
 @section('frontend-content')
 <section class="materials  bg-off-white">
@@ -35,9 +35,6 @@
         </div>
       </div>
       @endforeach
-      
-      
-      
     </div>
   </div>
   <br><br>
@@ -105,7 +102,7 @@
 </section> -->
 <section class="pt-5 pb-5 course-section bg-pink">
 
-  
+    <h1 class="text-center text-white">Courses</h1>
   <div class="mt-5 owl-carousel owl-theme" id="owl-two">
     @foreach($courses_d2 as $course)
     <div class="item">
@@ -116,7 +113,7 @@
                   ?>
                   <div class="card-body">
                     <h5 class="card-text text-center">{{ str_limit($course->course_title, $limit = 20, $end = '..') }}</h5>
-					<p style="font-family: AvenirNextLtPro-Medium" class="text-center">Hand Zone Training</p>
+					<p style="font-family: AvenirNextLtPro-Medium" class="text-center">Hands-on Training</p>
                     <!-- <h5 class="card-text">{{ str_limit($course->course_title, $limit = 20, $end = '..') }}</h5> -->
                     
                     
@@ -144,7 +141,7 @@
       <!-- <div class="col-md-4"> -->
       <div class="item single-tutor">
         <div class="card">
-          <a href="{{url('teacher/tutor-details',$tutor->user_id)}}" style="text-decoration: none;">
+          <a href="{{url('teacher/tutor-details',$tutor->user_id)}}"  style="text-decoration: none;">
             <?php echo "<img src='".asset($tutor->image)."' class='' style='height:300px;width:100%;object-fit:cover;object-position:center center' alt=''>"; ?>
             <div class="card-body text-center">
               <h5 class="text-warning">{{$tutor->fullname}}</h5>
@@ -155,7 +152,7 @@
               <i class="fas fa-star"></i>
               <br><br> -->
               <p class="card-text">{{ str_limit($tutor->profile_tag, $limit = 20, $end = '..') }}</p>
-              <p class=""> {{$tutor->price}} Tk/Per hour</p><br>
+              <p class=""> ${{$tutor->price}}/hour</p><br>
             </a>
           </div>
         </div>
@@ -269,7 +266,7 @@
             <li> <span><i class="fas fa-check"></i></span>Ask questions for your dream to success</li>
             <li> <span><i class="fas fa-check"></i></span>Also available for universities and language schools</li>
           </ul>
-          <a href="#" class="btn btn-warning text-white">For Bangla Learners</a>
+          <a href="#" class="btn btn-warning text-light">For Bangla Learners</a>
         </div>
       </div>
     </div>
@@ -278,7 +275,7 @@
     <div class="row">
       <div class="col-lg-6 col-xs-12 white-bg" style="">
         <div class="for-japanes-learner">
-          <h1>For Japanese  Learners</h1>
+          <h1 class="text-warning">For Japanese  Learners</h1>
           <p>Enjoy talking with people abroad</p> <br>
           <ul>
             <li> <span><i class="fas fa-check"></i></span> Connect to society by talking in bangladeshi with foreign young people</li>
@@ -286,7 +283,7 @@
             <li> <span><i class="fas fa-check"></i></span>Here you can challenge new things</li>
             <li> <span><i class="fas fa-check"></i></span>Also available in elderly houses and nursing homesIt would be a big opportunity for foreign labors</li>
           </ul>
-          <a href="#" class="btn btn-danger">For Bangladeshi Participants</a>
+          <a href="#" class="btn btn-warning text-light">For Bangladeshi Participants</a>
         </div>
       </div>
     </div>
@@ -337,7 +334,7 @@
   </div>
 </div>
 @endsection
-   @section('frontend-scripts')
+@section('frontend-scripts')
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -350,4 +347,4 @@ $('#popupModal').modal({
   show: false
 })
 </script>
-    @endsection
+@endsection

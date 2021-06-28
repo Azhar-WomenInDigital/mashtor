@@ -16,15 +16,18 @@
 
     <div class="row">
         <div class="col-md-6">
-            <h1 class=" wid-text-red wid-header-title wid-c-font-1"> Video Conference</h1>
+            <h1 class="text-warning wid-header-title wid-c-font-1"> Video Conference</h1>
             <br><br>
 <p id="my-peer">Your Id : </p>
  <video id="localStream" width="300" controls></video>
         <br /><br />
         <video id="remoteStream" width="300" controls></video>
         <br /><br />
-        <input type="text" id="remoteId" placeholder="remote id">
-        <button id="btnCall">Call</button>
+        <div class="d-flex">
+            <input type="text" id="remoteId" placeholder="remote id" class="mr-2">
+            <button class="btn btn-warning text-white" id="btnCall">Call</button>
+        </div>
+
 </div>
         
         <div class="col-md-6">

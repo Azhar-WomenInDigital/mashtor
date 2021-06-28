@@ -11,11 +11,11 @@
                 @csrf
 				<div class="search-box bg-pink px-5">
 					<br>
-					<h2 class="wid-text-red wid-header-title wid-c-font-1">Search Your Course</h2> <br>
+					<h2 class="wid-text-red wid-header-title wid-c-font-1 text-white">Search Your Course</h2> <br>
 					<div class="input-group mb-3">
 						<input type="text" class="form-control" placeholder="Search Your Course" aria-label="Recipient's username" aria-describedby="button-addon2" name="q">
 						<div class="input-group-append">
-							<button class="btn btn-outline-secondary wid-bg-red" type="submit" id="button-addon">Search</button>
+							<button class="btn btn-dark" type="submit" id="button-addon">Search</button>
 						</div>
 					</div> <br><br>
 				</div>
@@ -51,7 +51,7 @@
 								
 							</div>
 							<div class="card-footer">
-								<span class="float-left number2">Tk: {{$data->price}}</span>
+								<span class="float-left number2"> {{$data->price}}</span>
 								<span class="float-right">Enroll</span>
 							</div>
 						</div>

@@ -26,7 +26,7 @@
             </div>
             @endforeach
             <input type="hidden" value="{{ auth()->user()->id }}" name="user_id">
-            <button type="submit" class="btn btn-danger wid-bg-red wid-bg-red-hover text-white">Ok</button>
+            <button type="submit" class="btn btn-warning text-white">Ok</button>
           </form>
         </div>
       </div>
@@ -40,7 +40,7 @@
               @endforeach
             </div>
           </div>
-          <p class="text-danger pt-3">* If you want to do the course, please <a href="{{ url('register') }}" class="px-1">Sign Up</a>first</p>
+          <p class="text-warning pt-3">* If you want to do the course, please <a href="{{ url('register') }}" class="px-1">Sign Up</a>first</p>
         </div>
       </div>
      

@@ -22,14 +22,17 @@
                             <h6>Become a Mashtor with these simple steps:</h6>
                             <br>
                             <ul>
-                                <li class="<?php if(isset($user_basic_info)){ echo "text-danger fas fa-check";}?>"> 1. Update Your Profile</li>
+                                <?php
 
-                                <li class="<?php if(isset($user_education_info_check->id)){ echo "text-danger fas fa-check";}?>"> 2. Add Your Education</li>
+                                ?>
+                                <li class="<?php if(isset($user_basic_info)){ echo "text-warning fas fa-check";}?>"> 1. Update Your Profile</li>
 
-                                <li  class="<?php if(isset($user_course_info_for_check->courses)){ echo "text-danger fas fa-check";}?>"> 3. Add Your Course</li>
+                                <li class="<?php if(isset($user_education_info_check->id)){ echo "text-warning fas fa-check";}?>"> 2. Add Your Education</li>
+
+                                <li  class="<?php if(isset($user_course_info_for_check->courses)){ echo "text-warning  fas fa-check";}?>"> 3. Add Your Course</li>
                             </ul>
                             <?php
-                            if(Auth::user()->status == 1){
+                            if(Auth::user()->status== 1){
                                 echo "<span class='btn btn-success  font-weight-bold text-center '>Varified </span>";
                             }else{
                                 if(isset($user_education_info_check->id) && !empty($user_education_info_check->id) && isset($user_course_info_for_check->id) && !empty($user_course_info_for_check->id)){
@@ -71,14 +74,16 @@
                             
                         </div>
                         <!-- <div class="support-form"> -->
-                        <form action="{{url('teacher/msg')}}" method="post">
-                            @csrf
-                            <div class="form-group">
-                                <label for="">Face Any Problem Contact Us</label>
-                                <textarea name="msg" id="" cols="5" rows="5" class="form-control" required></textarea>
-                            </div>
-                            <input type="submit" class="btn btn-danger" value="Send">
-                        </form>
+                        <div class="p-2">
+                            <form action="{{url('teacher/msg')}}" method="post">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="">Face Any Problem Contact Us</label>
+                                    <textarea name="msg" id="" cols="5" rows="5" class="form-control" required></textarea>
+                                </div>
+                                <input type="submit" class="btn btn-warning text-light" value="Send">
+                            </form>
+                        </div>
                         <!-- </div> -->
                     </div>
                 </div>
@@ -93,18 +98,18 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="" class="pb-2">Profile Tag</label>
-                                        <input type="text" class="form-control" name="profile_tag" value="<?php if(isset($user_basic_info) && !empty($user_basic_info)){ echo $user_basic_info->profile_tag;}?>" placeholder="Exp: Software Engineer" required>
+                                        <input type="text" class="form-control" name="profile_tag" value="<?php if(isset($user_basic_info) && !empty($user_basic_info)){ echo $user_basic_info->profile_tag;}?>" placeholder="E.g: Software Engineer" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="">Price per hour</label>
-                                        <input type="text" class="form-control" name="price" value="<?php if(isset($user_basic_info) && !empty($user_basic_info)){ echo $user_basic_info->price;}?>" placeholder="Exp: 30" required>
+                                        <input type="text" class="form-control" name="price" value="<?php if(isset($user_basic_info) && !empty($user_basic_info)){ echo $user_basic_info->price;}?>" placeholder="E.g: 30" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="">About Your Self</label>
                                         <textarea name="user_description" id="" cols="5" rows="5" class="form-control" required><?php if(isset($user_basic_info) && !empty($user_basic_info)){ echo $user_basic_info->user_description;}?></textarea>
                                     </div>
                                     <input type="hidden" value="<?php if(isset($user_basic_info) && !empty($user_basic_info)){ echo $user_basic_info->id;}?>" name="user_basic_info_id">
-                                    <input type="submit" class="btn btn-danger" value="Save">
+                                    <input type="submit" class="btn btn-warning text-light" value="Save">
                                 </form>
                             </div>
                         </div>
@@ -128,15 +133,15 @@
                                                 @csrf
                                                 <div class="form-group">
                                                     <label for="">School Name</label>
-                                                    <input type="text" class="form-control" name="school_name" required placeholder="Exp: BUET">
+                                                    <input type="text" class="form-control" name="school_name" required placeholder="E.g: BUET">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="">Degree Name</label>
-                                                    <input type="text" class="form-control" name="degree_name" placeholder="Exp: CSE" required >
+                                                    <input type="text" class="form-control" name="degree_name" placeholder="E.g: CSE" required >
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="">Fild of Study</label>
-                                                    <input type="text" class="form-control" name="field_of_study" placeholder="Exp: Computer Institute" required>
+                                                    <input type="text" class="form-control" name="field_of_study" placeholder="E.g: Computer Institute" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="">From Year</label>
@@ -155,7 +160,7 @@
                                                 
                                                 
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-danger">Save </button>
+                                                <button type="submit" class="btn btn-warning text-light">Save </button>
                                             </form>
                                         </div>
                                     </div>
@@ -232,7 +237,7 @@
                                                 
                                                 
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-danger"> Update </button>
+                                                <button type="submit" class="btn btn-warning text-light"> Update </button>
                                             </form>
                                         </div>
 
@@ -276,7 +281,7 @@
                                                 @csrf
                                                 <div class="form-group">
                                                     <label for="">Professional / School Program / Language Course name or expertice</label>
-                                                    <input type="text" class="form-control" name="courses" placeholder="Exp: Bangla Language">
+                                                    <input type="text" class="form-control" name="courses" placeholder="E.g: Bangla Language">
                                                 </div>
 
 
@@ -292,7 +297,7 @@
                                                 
                                                 
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-danger">Save </button>
+                                                <button type="submit" class="btn btn-warning text-light">Save </button>
                                             </form>
                                         </div>
                                     </div>
@@ -354,7 +359,7 @@
                                                 <input type="hidden" name="cor_update_id" value="<?php if(isset($user_course_info) && !empty($user_course_info)){ echo $data->id;}?>">
                                                 
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-danger">Update </button>
+                                                <button type="submit" class="btn btn-warning text-light">Update </button>
                                             </form>
                                         </div>
                                     </div>

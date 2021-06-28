@@ -17,12 +17,12 @@
                                 @csrf
                     <div class="search-box bg-pink px-5">
                         <br>
-                        <h2 class="wid-text-red wid-c-font-1">Search Mashtor</h2> <br>
+                        <h2 class="text-white wid-c-font-1">Search Mashtor</h2> <br>
                         <div class="input-group mb-3">
                             
                             <input type="text" class="form-control change-placeholder" placeholder="Search Mashtor" aria-label="Recipient's username" aria-describedby="button-addon2" name="q">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary wid-bg-red" type="submit" id="button-addon">Search</button>
+                                <button class="btn btn-dark" type="submit" id="button-addon">Search</button>
                             </div>
                            
                         </div> <br><br>
@@ -53,7 +53,7 @@
                                     <p class="h6 card-subtitle text-muted">{{ str_limit($tutor->profile_tag, $limit = 20, $end = '..') }}</p><br>
                                 </div>
                                 <div class="card-footer">
-                                    <span class="float-left number2">{{$tutor->price}} Tk/Per hour</span>
+                                    <span class="float-left number2">${{$tutor->price}} / hour</span>
                                     <span class="float-right">Hire</span>
                                 </div>
                             </div>

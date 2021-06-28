@@ -49,12 +49,12 @@
                             </div>
                             <div class="form-group">
                                 @if (Route::has('password.request'))
-                                <a href="{{ route('password.request') }}" class="text-light float-left">Forget Password ? </a>
+                                <a href="{{ route('password.request') }}" class="text-light float-left">Forgot Password ? </a>
                                 @endif
                                 <a href="{{url('register')}}" class="text-light float-right">Create Account</a>
                             </div>
                             <div class="form-group text-center pt-5">
-                                <input type="submit" class="btn btn-dark font-weight-bold p-2 wid-border-radius-none wid-font-22 wid-button wid-sm-font-18" value="Login">
+                                <input type="submit" class="btn btn-dark font-weight-bold p-2  wid-border-radius-none wid-font-22 wid-button wid-sm-font-18" value="Login">
                             </div>
                         </form>
                     </div>

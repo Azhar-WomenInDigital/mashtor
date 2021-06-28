@@ -84,7 +84,7 @@ font-size: 4.5rem;
 <br>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-danger">
+                                <button type="submit" class="btn btn-warning text-white">
                                     {{ __('Change Password') }}
                                 </button>
                             </div>

@@ -63,7 +63,6 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
- 'mysql2' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
             'host' => 'dynamichubscom.ipagemysql.com',

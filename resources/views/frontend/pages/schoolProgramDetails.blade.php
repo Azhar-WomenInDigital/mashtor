@@ -31,7 +31,7 @@ $course_view = DB::table('courses')->where('id',$course->id)->first();
 <!-- <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" class="fb-xfbml-parse-ignore btn btn-facebook btn-lg"><i class="fab fa-facebook-f" style="margin-right: 5px;"></i> Share </a></div> -->
 <div class="col-lg-12 mt-5">
     <div class="col-lg-8 mx-auto">
-        <h1 class="text-center wid-text-red wid-header-title wid-c-font-1">
+        <h1 class="text-center text-warning wid-header-title wid-c-font-1">
             <?php 
                 if(isset($course->course_title) && !empty($course->course_title)){
                     echo $course->course_title;
@@ -67,7 +67,7 @@ $course_view = DB::table('courses')->where('id',$course->id)->first();
                 <input type="hidden" name="course_id" value="{{$course->id}}">
                 <input type="hidden" name="course_cat" value="<?php if(isset($course->course_cat) && !empty($course->course_cat)){echo $course->course_cat;}?>">
 
-                <button class="btn font-weight-bold wid-bg-red p-2 wid-bg-red-hover wid-border-radius-none wid-font-22 wid-button wid-sm-font-18"
+                <button class="btn btn-warning text-light font-weight-bold  p-2 wid-bg-red-hover wid-border-radius-none wid-font-22 wid-button wid-sm-font-18"
                 type="submit">Enroll
                 </button>
             
@@ -93,14 +93,14 @@ $course_view = DB::table('courses')->where('id',$course->id)->first();
             }else{
             ?>
             <br>
-            <a class="mt-3 btn font-weight-bold wid-bg-red p-2 wid-bg-red-hover wid-border-radius-none wid-font-22 wid-button wid-sm-font-18" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Apply For Discount</a>
+            <a class="mt-3 btn btn-warning font-weight-bold p-2  wid-border-radius-none wid-font-22 wid-button wid-sm-font-18" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Apply For Discount</a>
             <div class="collapse mt-4" id="collapseExample">
                 <div class="card card-body">
                     
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Enter your discount code  " aria-label="Recipient's username" aria-describedby="button-addon2" name="discount">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Apply</button>
+                                <button class="btn btn-dark" type="submit" id="button-addon2">Apply</button>
                             </div>
                         </div>
                    
@@ -112,14 +112,14 @@ $course_view = DB::table('courses')->where('id',$course->id)->first();
             }else{
             ?>
             <br>
-            <a class="mt-3 btn font-weight-bold wid-bg-red p-2 wid-bg-red-hover wid-border-radius-none wid-font-22 wid-button wid-sm-font-18" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Apply For Discount</a>
+            <a class="mt-3 btn btn-warning text-white font-weight-bold p-2 r wid-border-radius-none wid-font-22 wid-button wid-sm-font-18" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Apply For Discoun</a>
             <div class="collapse mt-4" id="collapseExample">
                 <div class="card card-body">
                     
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Enter your discount code  " aria-label="Recipient's username" aria-describedby="button-addon2" name="discount">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Apply</button>
+                                <button class="btn btn-dark" type="submit" id="button-addon2">Apply</button>
                             </div>
                         </div>
                    
@@ -142,13 +142,13 @@ $course_view = DB::table('courses')->where('id',$course->id)->first();
 <div class="container-fluid">
     <div class="row overview-section">
         <div class="col-lg-6 pt-5 px-4 pb-3 p-md-5">
-            <h1 class="wid-text-red wid-c-font-1 wid-sub-header-title ">Overview</h1> <br>
+            <h1 class="text-warning wid-c-font-1 wid-sub-header-title ">Overview</h1> <br>
             <p class="wid-text-dark wid-c-font-3 wid-font-19 wid-sm-font-14">
                 Price : 
             <?php
                 if(isset($course->price) && !empty($course->price)){
             ?> 
-               <span class="wid-text-red font-weight-bold">{{$course->price}}</span>
+               <span class="text-warning font-weight-bold">{{$course->price}}</span>
             <?php } ?>
     
             </p>
@@ -157,7 +157,7 @@ $course_view = DB::table('courses')->where('id',$course->id)->first();
             <?php
                 if(isset($course->duration) && !empty($course->duration)){
             ?> 
-            <span class="wid-text-red font-weight-bold"> {{$course->duration}} Month </span>
+            <span class="text-warning font-weight-bold"> {{$course->duration}} Month </span>
             <?php } ?>
         </p>
         <p class="wid-text-dark wid-c-font-3 wid-font-19 wid-sm-font-14">
@@ -165,7 +165,7 @@ $course_view = DB::table('courses')->where('id',$course->id)->first();
              <?php
                 if(isset($course->start_date) && !empty($course->start_date)){
             ?> 
-             <span class="wid-text-red font-weight-bold"> {{date('d F Y', strtotime($course->start_date))}} </span>
+             <span class="text-warning font-weight-bold"> {{date('d F Y', strtotime($course->start_date))}} </span>
             <?php } ?>
             
         </p>
@@ -250,7 +250,7 @@ if(isset($instructor)){
 <div class="container">
     <div class="row mt-md-3">
         <div class="col-lg-12 mt-4 pt-4 pt-md-4 mt-md-5">
-            <h1 class="wid-text-red text-center wid-c-font-1 wid-sub-header-title">What to expect</h1>
+            <h1 class="text-warning text-center wid-c-font-1 wid-sub-header-title">What to expect</h1>
         </div>
     </div>
     <div class="row">

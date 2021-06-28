@@ -19,7 +19,9 @@ font-size: 4.5rem;
 @include('frontend.pages.profile.profile_master')
 <div class="col-md-9">
   <div class="card">
-  <div class="card-body">
+    <div class="card-body">
+      
+    
   <h1 id="head"> Edit Profile </h1><br><br>
   <form action="{{url('profile/update',Auth::user()->id)}}" method="post" enctype="multipart/form-data">
     @csrf
@@ -35,13 +37,17 @@ font-size: 4.5rem;
       <label for="">Number</label>
       <input type="text" name="number" class="form-control" value="{{Auth::user()->number}}">
     </div>
+<div class="form-group">
+      <label for="course-name">Course Name</label>
+      <input type="text" disabled name="course_name" class="form-control" value="{{Auth::user()->course_name}}">
+    </div>
     <div class="form-group">
       <label for="">Upload Image</label>
       <input type="file" name="image" class="form-control">
     </div>
 
     <div class="form-group text-center">
-      <button type="submit" class="btn font-weight-bold wid-bg-red p-2 wid-bg-red-hover wid-border-radius-none wid-font-22 wid-button wid-sm-font-18">Update</button>
+      <button type="submit" class="btn btn-warning text-white font-weight-bold p-2 wid-border-radius-none wid-font-22 wid-button wid-sm-font-18">Update</button>
     </div>
   </form>
   </div>

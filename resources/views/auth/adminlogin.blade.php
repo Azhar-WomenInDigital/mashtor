@@ -7,9 +7,8 @@
 <div class="account-bg">
                 <div class="card-box mb-0">
                     <div class="text-center m-t-20">
-                        <a href="#" class="logo">
+                        <a href="http://mashtor.com/" class="logo">
                             <img src="{{url('http://mashtor.com/frontend/assets/imgs/WID%20TECH%20School.png')}}" class="img-fluid" width="70px" height="70px">
-                            <!-- <span>Wid</span> -->
                         </a>
                     </div>
                     <div class="m-t-10 p-20">
@@ -109,39 +108,5 @@
                     <p class="text-white">Don't have an account? <a href="#" class="text-white m-l-5"><b>Sign Up</b></a></p>
                 </div> -->
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @endsection

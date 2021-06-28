@@ -21,7 +21,7 @@
 
         <!-- Modernizr js -->
         <script src="{{url('backend/js/modernizr.min.js')}}"></script>
-        <style>
+<style>
             .account-pages{
                 background: #FFB317;
             }

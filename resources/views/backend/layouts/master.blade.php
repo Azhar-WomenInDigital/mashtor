@@ -6,25 +6,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Step Of Learn">
         <meta name="author" content="Coderthemes">
+
         <!-- App Favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico">
+
         <!-- App title -->
         <title>Wid | @yield('page-title')</title>
+
         <!--Morris Chart CSS -->
 		<link rel="stylesheet" href="{{url('backend/assets/plugins/morris/morris.css')}}">
+
         <!-- Switchery css -->
         <link href="{{url('backend/assets/plugins/switchery/switchery.min.css')}}" rel="stylesheet" />
+
         <!-- Bootstrap CSS -->
         <link href="{{url('backend/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{url('editor/summernote.css')}}" rel="stylesheet" type="text/css" />
+
         <!-- App CSS -->
         <link href="{{url('backend/assets/css/style.css')}}" rel="stylesheet" type="text/css" />
+        @yield('backend-stylesheet')
         <!-- Modernizr js -->
         <script src="{{url('backend/assets/js/modernizr.min.js')}}"></script>
-        <!-- Yield Another Page Css -->
-        @yield('backend-stylesheet')
-        <!-- Toastr Css -->
-        <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+
     </head>
 
 
@@ -88,14 +92,18 @@
         <script src="{{url('backend/assets/js/jquery.scrollTo.min.js')}}"></script>
         <script src="{{url('backend/assets/js/jquery.slimscroll.js')}}"></script>
         <script src="{{url('backend/assets/plugins/switchery/switchery.min.js')}}"></script>
+
         <!--Morris Chart-->
 		<script src="{{url('backend/assets/plugins/morris/morris.min.js')}}"></script>
 		<script src="{{url('backend/assets/plugins/raphael/raphael-min.js')}}"></script>
+
         <!-- Counter Up  -->
         <script src="{{url('backend/assets/plugins/waypoints/lib/jquery.waypoints.min.js')}}"></script>
         <script src="{{url('backend/assets/plugins/counterup/jquery.counterup.min.js')}}"></script>
+
         <!-- Page specific js -->
         <script src="{{url('backend/assets/pages/jquery.dashboard.js')}}"></script>
+
         <!-- App js -->
         <script src="{{url('backend/assets/js/jquery.core.js')}}"></script>
         <script src="{{url('backend/assets/js/jquery.app.js')}}"></script>
@@ -104,20 +112,6 @@
               $('.summernote').summernote();
             });
         </script>
-        <!-- Toastr Js -->
-        {{-- <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-        {!! Toastr::message() !!}
-        <script>
-            @if($errors->any())
-            @foreach($errors->all() as $error)
-                toastr.error('{{ $error }}','Error',{
-                closeButton:true,
-                progressBar:true,
-                });
-            @endforeach
-            @endif
-        </script> --}}
-        <!-- yield another page js -->
         @yield('backend-scripts')
     </body>
 </html>

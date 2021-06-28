@@ -11,7 +11,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{url('teacher/find-tutor')}}">Find Tutor</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Mashter Details</li>
+                <li class="breadcrumb-item active" aria-current="page">Mashtor Details</li>
             </ol>
         </nav>
         <div class="=">
@@ -20,11 +20,11 @@
                 <div class="col-12">
                     <div class="search-box bg-pink px-5">
                         <br>
-                        <h2 class="wid-text-red wid-c-font-1">Search Find Tutor</h2> <br>
+                        <h2 class="text-white wid-c-font-1">Search Find Tutor</h2> <br>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Search Find Tutor" aria-label="Recipient's username" aria-describedby="button-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary wid-bg-red" type="button" id="button-addon">Search</button>
+                                <button class="btn btn-dark" type="button" id="button-addon">Search</button>
                             </div>
                         </div> <br><br>
                     </div>
@@ -39,9 +39,9 @@
                                 <!-- <input id="fab" type="checkbox" class="fab"><label for="fab" class="toggle">+</label> -->
                                 <?php echo "<img src='".asset($tutors->image)."' class='img-fluid img-profile' alt='Card image'>";?>
                             </figure>
-                            <p class="text-center">{{$tutors->price}} Tk/Per Hour</p> 
+                            <p class="text-center">${{$tutors->price}} /Hour</p> 
                             <div class="message text-center mt-3">
-                                <a href="#" class="btn btn-info"  data-toggle="modal" data-target="#staticBackdrop"> Message </a>
+                                <a href="#" class="btn btn-warning text-light"  data-toggle="modal" data-target="#staticBackdrop"> Message </a>
                             </div>
                         </div>
                     </div>
@@ -50,23 +50,12 @@
                         <div class="card-body">
                             <h3>If you hire {{$tutors->fullname}}</h3>
                             <p>Please Contact us</p>
-                            <h3 class="text-danger"><a href="tel:+8801635-497868" class="text-danger" style="text-decoration:none;">+8801635-497868</a></h3>
-                            <!-- <a href="#" class="btn btn-info">Message</a>
+                            <h3 class="text-warning"><a href="tel:+8801635-497868" class="text-warning" style="text-decoration:none;">+8801635-497868</a></h3>
+                            <!-- <a href="#" class="btn btn-warning">Message</a>
                             <a href="#" class="btn btn-info">Hire</a> -->
                         </div>
                     </div>
                     <br><br>
-                        <div class="flex social-btns">
-                            <a class="app-btn blu flex vert" href="http:apple.com" style="text-decoration: none;">
-                                <i class="fab fa-apple"></i>
-                                <p>Available on the <br/> <span class="big-txt">App Store</span></p>
-                            </a>
-                            <a class="app-btn blu flex vert" href="http:google.com" style="text-decoration: none;">
-                                <i class="fab fa-google-play"></i>
-                                <p>Get it on <br/> <span class="big-txt">Google Play</span></p>
-                            </a>
-                            
-                        </div>
                 </div>
                 <div class="col-md-8">
                     <div class="card">
