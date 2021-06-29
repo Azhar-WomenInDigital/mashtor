@@ -1,9 +1,9 @@
 @extends('frontend.layouts.dashboard_mastering')
 @section('dashboard-title',' Dashboard ')
+@section('frontend-styles')
+@endsection
 @section('frontend-content')
-<br>
-<br>
-<section class="search-bar pb-2 pt-2">
+<section class="search-bar pb-2 pt-sm-3 pt-md-4 pt-lg-5">
 	<br>
 	<div class="container">
 		<form action="{{url('search/find/tutoring')}}" method="post">
@@ -19,13 +19,11 @@
 						<input type="text" name="location" class="form-control  custom-form-control" placeholder="Location " name="location">
 					</div>
 				</div>
-
 				<div class="col-md-3">
 					<div class="form-group">
 						<input type="text" name="location" class="form-control  custom-form-control" placeholder="Enter Country Name " name="location">
 					</div>
 				</div>
-				
 				<div class="col-md-2">
 					<div class="form-group">
 						<input type="submit" class="btn btn-success custom-btn" value="Search">
@@ -35,7 +33,6 @@
 		</form>
 	</div>
 </section>
-
 <section class="find-tutor-section pb- pt-5">
 	<div class="container">
 		<div class="row">
@@ -52,11 +49,10 @@
 					<br>
 					<div class="card p-2 custom-card">
 						<div class="hourly-rate">
-							<p> <b>Institute</b></p>  <br>
-						<div class="input-group mb-3">
-							<input type="text" class="form-control" placeholder="Serach" aria-label="Recipient's username" aria-describedby="button-addon2">
-							
-						</div>
+							<p><b>Institute</b></p><br>
+							<div class="input-group mb-3">
+								<input type="text" class="form-control" placeholder="Serach" aria-label="Recipient's username" aria-describedby="button-addon2">
+							</div>
 							<?php
 								$university = DB::table('university_names')->get();
 								if(isset($university)){
@@ -67,11 +63,12 @@
 								<label class="custom-control-label" for="{{$name->id}}">  {{$name->name}} </label>
 							</div>
 							@endforeach
-						<?php } ?>
-
-						</div> <br> <hr>
+							<?php } ?>
+						</div> 
+						<br> 
+						<hr>
 						<div class="level-rate">
-							<p> <b>Level </b></p>  <br>
+							<p><b>Level</b></p><br>
 							@foreach($levels as $level)
 							<div class="custom-control custom-checkbox">
 								<input type="checkbox" name="level" class="custom-control-input level_id" value="{{$level->id}}" id="{{$level->id}}">
@@ -80,8 +77,7 @@
 							@endforeach
 						</div><hr>
 						<div class="level-rate">
-							<p> <b>Gender </b></p> <br>
-
+							<p><b>Gender</b></p><br>
 							<div class="custom-control custom-checkbox">
 								<input type="checkbox" class="custom-control-input" id="Male">
 								<label class="custom-control-label" for="Male">  Male</label>
@@ -94,30 +90,12 @@
 								<input type="checkbox" class="custom-control-input" id="Any">
 								<label class="custom-control-label" for="Any">Any</label>
 							</div>
-							<!-- @foreach($facultys as $data)
-							<div class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input" id="{{$data->faculty}}">
-								<label class="custom-control-label" for="{{$data->faculty}}">{{$data->faculty}}</label>
-							</div>
-							@endforeach -->
 						</div><hr>
-						<!-- <div class="level-rate">
-							<p> <b>Subject</b></p>  <br>
-							@foreach($subjects as $data)
-							<div class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input" id="{{$data->subject}}">
-								<label class="custom-control-label" for="{{$data->subject}}">{{$data->subject}}</label>
-							</div>
-							@endforeach
-						</div><hr> -->
 						<div class="level-rate">
-							<p> <b> Location </b></p> <br>
-
+							<p><b>Location</b></p><br>
 							<div class="input-group mb-3">
 								<input type="text" class="form-control" placeholder="Serach" aria-label="Recipient's username" aria-describedby="button-addon2">
-							
 							</div>
-
 							<div class="custom-control custom-checkbox">
 								<input type="checkbox" class="custom-control-input" id="Dhaka">
 								<label class="custom-control-label" for="Dhaka">  Dhaka </label>
@@ -147,7 +125,7 @@
 								<label class="custom-control-label" for="Sylhet"> Sylhet </label>
 							</div>
 						</div>
-<br>
+						<br>
 						<button type="submit" class="btn btn-success custom-btn form-control">Search</button>
 					</div>
 				</div>
@@ -163,11 +141,9 @@
 									if(isset($tutor->profile_pic) && !empty($tutor->profile_pic)){
 								?>
 								<?php echo "<img src='".asset($tutor->profile_pic)."' class='find-tutor-image  text-center' alt='{{$tutor->f_name}}{{$tutor->l_name}}'> ";?>
-
-							<?php }else{?>
+								<?php }else{?>
 								<img src="{{url('frontend/assets/imgs/user_icon.png')}}" class='find-tutor-image  text-center'>
-							<?php } ?>
-
+								<?php } ?>
 								<div class="tutor-name-content">
 									<p>{{$tutor->f_name}}{{$tutor->l_name}}</p>
 									<h5>$ {{$tutor->hourly_rate}} /Hour</h5> <br>
@@ -175,11 +151,9 @@
 								</div>
 							</div>
 							<div class="col-md-8">
-								
 								<div class="">
 									<h5 class="mt-0">{{$tutor->profile_tag}}</h5>
 									{{$tutor->about_details}}
-									
 								</div>
 								<br>
 								<div class="teke-class">
@@ -199,7 +173,6 @@
 									<p><b>Subjects</b></p>
 									<?php
 										$subjects = DB::table('which_subject_teaches')
-										
 										->where('which_subject_teaches.user_id',$tutor->userId)->get();
 									?>
 									@foreach($subjects as $subject)
@@ -212,69 +185,20 @@
 									<a href="#" class="badge badge-success">{{$mainSub->subject}}</a>
 									<?php } }?>
 									@endforeach
-									
 								</div>
 							</div>
 						</div>
 					</div>
 					<br>
 					@endforeach
-					
 				</div>
 				{{ $tutors->links() }}
 			</div>
 		</div>
 	</div>
 </section>
+@endsection
 @section('frontend-scripts')
-<script>
-	$(document).ready(function(){
-
-    // filter_data();
-
-    // function filter_data()
-    // {
-    //     $('.all-tutor').html('<div id="loading" style="" ></div>');
-    //    // var action = 'fetch_data';
-    //     // var minimum_price = $('#hidden_minimum_price').val();
-    //     // var maximum_price = $('#hidden_maximum_price').val();
-    //     var level_id = get_filter('level_it');
-    //     // var ram = get_filter('ram');
-    //     // var storage = get_filter('storage');
-    //     $.ajax({
-    //         url:"fetch_data.php",
-    //         method:"POST",
-    //         data:{ level_id:level_id },
-    //         success:function(data){
-    //             $('.filter_data').html(data);
-    //         }
-    //     });
-    // }
-
-    // function get_filter(class_name)
-    // {
-    //     var filter = [];
-    //     $('.'+class_name+':checked').each(function(){
-    //         filter.push($(this).val());
-    //     });
-    //     return filter;
-    // }
-
-    // $('.common_selector').click(function(){
-    //     filter_data();
-    // });
-
-    
-
-});
-
-
-
-
-
-       
-</script>
-
 <script>
 	$(document).ready(function(){
 		var level_id = $(this).val();
@@ -283,5 +207,4 @@
 		})
 	});
 </script>
-@endsection
 @endsection

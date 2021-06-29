@@ -1,34 +1,30 @@
 @extends('frontend.layouts.master')
 @section('front-page-title',' | Course Details ')
-@section('frontend-content')
-<?php
-if(isset($course->id)){
-DB::update(" UPDATE courses SET view = view + 1 WHERE id = '".$course->id."' ");
-$course_view = DB::table('courses')->where('id',$course->id)->first();
-}
-?>
+@section('frontend-styles')
 <style>
     .invalid-feedback{
         display: block;
     }
 </style>
+@endsection
+@section('frontend-content')
+<?php
+    if(isset($course->id)){
+        DB::update(" UPDATE courses SET view = view + 1 WHERE id = '".$course->id."' ");
+        $course_view = DB::table('courses')->where('id',$course->id)->first();
+    }
+?>
 <div id="fixed-social">
-  <div>
-    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" class="fixed-facebook" target="_blank"><i class="fab fa-facebook-f"></i> <span> <i class="fas fa-share"></i> Share </span></a>
-  </div>
-  <div>
-    <a href="https://twitter.com/intent/tweet?text={{ url()->current() }}" class="fixed-twitter" target="_blank"><i class="fab fa-twitter"></i> <span><i class="fas fa-share"></i> Share </span></a>
-  </div>
-  
-  <div>
-    <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ url()->current() }}" class="fixed-linkedin" target="_blank"><i class="fab fa-linkedin-in"></i> <span> <i class="fas fa-share"></i> Share </span></a>
-  </div>
-  
+    <div>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" class="fixed-facebook" target="_blank"><i class="fab fa-facebook-f"></i> <span> <i class="fas fa-share"></i> Share </span></a>
+    </div>
+    <div>
+        <a href="https://twitter.com/intent/tweet?text={{ url()->current() }}" class="fixed-twitter" target="_blank"><i class="fab fa-twitter"></i> <span><i class="fas fa-share"></i> Share </span></a>
+    </div>
+    <div>
+        <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ url()->current() }}" class="fixed-linkedin" target="_blank"><i class="fab fa-linkedin-in"></i> <span> <i class="fas fa-share"></i> Share </span></a>
+    </div>
 </div>
-
-
-<!--end navbar-->
-<!-- <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" class="fb-xfbml-parse-ignore btn btn-facebook btn-lg"><i class="fab fa-facebook-f" style="margin-right: 5px;"></i> Share </a></div> -->
 <div class="col-lg-12 mt-5">
     <div class="col-lg-8 mx-auto">
         <h1 class="text-center text-warning wid-header-title wid-c-font-1">
@@ -44,17 +40,16 @@ $course_view = DB::table('courses')->where('id',$course->id)->first();
                     if(isset($course->course_descrption) && !empty($course->course_descrption)){
                 ?>
                 {!! $course->course_descrption !!}
-            <?php } ?>
+                <?php } ?>
             </p>
         </div>
     </div>
     <div class="row">
         <?php
-        if(isset($course->id)){
-    ?>
+            if(isset($course->id)){
+        ?>
         <div class="col-md-6 mx-auto mt-md-5 pb-md-4 mb-md-5 my-2 pb-2 text-center">
             <form action="{{url('enrole/course/school')}}" method="post">
-                
                 @csrf
                 @if ($errors->has('discount'))
                 <span class="invalid-feedback" role="alert">
@@ -66,74 +61,63 @@ $course_view = DB::table('courses')->where('id',$course->id)->first();
                 @endif
                 <input type="hidden" name="course_id" value="{{$course->id}}">
                 <input type="hidden" name="course_cat" value="<?php if(isset($course->course_cat) && !empty($course->course_cat)){echo $course->course_cat;}?>">
-
                 <button class="btn btn-warning text-light font-weight-bold  p-2 wid-bg-red-hover wid-border-radius-none wid-font-22 wid-button wid-sm-font-18"
                 type="submit">Enroll
                 </button>
-            
-            <?php
-            if(isset(Auth::user()->id)){
-            $discount = Auth::user()->discount_code;
-            if(isset($discount) && !empty($discount)){
-            $discountcode = DB::table('discount_codes')->get();
-            foreach($discountcode as $dis){
-            if($discount == $dis->discount_code){
-            echo "<h3 class='pt-4 font-weight-bold  p-2  wid-border-radius-none wid-font-22 wid-button wid-sm-font-18'> WOW You Have Got ".$dis->discount." % Discount </h3>";
-            ?>
-            <input type="hidden" name="discount" value="{{$dis->discount}}">
-            <?php
-            }
-            else{
-            ?>
-            
-            <?php
-            }
-            }
-            
-            }else{
-            ?>
-            <br>
-            <a class="mt-3 btn btn-warning font-weight-bold p-2  wid-border-radius-none wid-font-22 wid-button wid-sm-font-18" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Apply For Discount</a>
-            <div class="collapse mt-4" id="collapseExample">
-                <div class="card card-body">
-                    
+                <?php
+                    if(isset(Auth::user()->id)){
+                    $discount = Auth::user()->discount_code;
+                    if(isset($discount) && !empty($discount)){
+                    $discountcode = DB::table('discount_codes')->get();
+                    foreach($discountcode as $dis){
+                    if($discount == $dis->discount_code){
+                    echo "<h3 class='pt-4 font-weight-bold  p-2  wid-border-radius-none wid-font-22 wid-button wid-sm-font-18'> WOW You Have Got ".$dis->discount." % Discount </h3>";
+                ?>
+                <input type="hidden" name="discount" value="{{$dis->discount}}">
+                <?php
+                    }else{
+                ?>
+                
+                <?php
+                }
+                }}else{
+                ?>
+                <br>
+                <a class="mt-3 btn btn-warning text-light font-weight-bold p-2  wid-border-radius-none wid-font-22 wid-button wid-sm-font-18" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Apply For Discount</a>
+                <div class="collapse mt-4" id="collapseExample">
+                    <div class="card card-body">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Enter your discount code  " aria-label="Recipient's username" aria-describedby="button-addon2" name="discount">
                             <div class="input-group-append">
                                 <button class="btn btn-dark" type="submit" id="button-addon2">Apply</button>
                             </div>
                         </div>
-                   
+                    </div>
                 </div>
-            </div>
-            <?php
-            }
-            
-            }else{
-            ?>
-            <br>
-            <a class="mt-3 btn btn-warning text-white font-weight-bold p-2 r wid-border-radius-none wid-font-22 wid-button wid-sm-font-18" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Apply For Discoun</a>
-            <div class="collapse mt-4" id="collapseExample">
-                <div class="card card-body">
-                    
+                <?php
+                }
+                }else{
+                ?>
+                <br>
+                <a class="mt-3 btn btn-warning text-white font-weight-bold p-2 r wid-border-radius-none wid-font-22 wid-button wid-sm-font-18" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Apply For Discoun</a>
+                <div class="collapse mt-4" id="collapseExample">
+                    <div class="card card-body">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Enter your discount code  " aria-label="Recipient's username" aria-describedby="button-addon2" name="discount">
                             <div class="input-group-append">
                                 <button class="btn btn-dark" type="submit" id="button-addon2">Apply</button>
                             </div>
                         </div>
-                   
+                    </div>
                 </div>
-            </div>
-            <?php
-            }
-            ?>
-            <br><br>
+                <?php
+                }
+                ?>
+                <br><br>
             </form>
             <br><br>
-            
         </div>
-    <?php } ?>
+        <?php } ?>
     </div>
 </div>
 </header>
@@ -150,7 +134,6 @@ $course_view = DB::table('courses')->where('id',$course->id)->first();
             ?> 
                <span class="text-warning font-weight-bold">{{$course->price}}</span>
             <?php } ?>
-    
             </p>
             <p class="wid-text-dark wid-c-font-3 wid-font-19  wid-sm-font-14">
             <br>Course Duration : 
@@ -159,18 +142,15 @@ $course_view = DB::table('courses')->where('id',$course->id)->first();
             ?> 
             <span class="text-warning font-weight-bold"> {{$course->duration}} Month </span>
             <?php } ?>
-        </p>
-        <p class="wid-text-dark wid-c-font-3 wid-font-19 wid-sm-font-14">
+            </p>
+            <p class="wid-text-dark wid-c-font-3 wid-font-19 wid-sm-font-14">
              <br> Class start from :
              <?php
                 if(isset($course->start_date) && !empty($course->start_date)){
             ?> 
              <span class="text-warning font-weight-bold"> {{date('d F Y', strtotime($course->start_date))}} </span>
             <?php } ?>
-            
-        </p>
-            
-        
+            </p>
         </div>
         <div class="col-lg-6">
             <div class="row align-items-center h-100">
@@ -190,23 +170,22 @@ $course_view = DB::table('courses')->where('id',$course->id)->first();
     if($course->id == 33 or $course->id == 19){
 ?>
 <div class="container-fluid wid-bg-pink">
-    
     <div class="row instructor-details">
         <div class="col-lg-6">
             <div class="row text-center">
                 <div class="col-12 mx-auto">
-                    <img src="{{url('frontend/assets/imgs/digital_merketing_instructor.png')}}" class="w-100 instructor-img" alt="Women in digital" style="height: 500px;object-fit: cover;object-position: top;">      </div>
+                    <img src="{{url('frontend/assets/imgs/digital_merketing_instructor.png')}}" class="w-100 instructor-img" alt="Women in digital" style="height: 500px;object-fit: cover;object-position: top;">      
+                </div>
             </div>
         </div>
         <div class="col-lg-6 mt-4 mt-md-0 px-4 px-md-0" style="align-self: center;">
             <h1 class="wid-text-red wid-c-font-1 wid-sub-header-title ">Meet our instructor</h1>
             <p class="wid-text-dark wid-c-font-2 wid-font-25 wid-sm-font-16"> Imran Ali </p>
-            <p class="wid-text-dark wid-c-font-3 wid-font-22 pt-md-4 pt-2 wid-sm-font-18"><span style="font-family: AvenirNextLTPro-Regular; font-size: 22px;">
-I’m Imran Ali, over the last 18 years; I have developed a wide range of websites and project management. 
-<br>
-To seek a challenging position in an IT Industry and contribute extensively in an environment where there are opportunities for personal and professional growth and also want to give my IT knowledge in business developments
-<br>
-Specialties: I also have some experience in the following areas: Digital Marketing, Wordpress, Drupla, Joomla, CSS3, html5, Flash , Website Designing and Graphic Design.</span><br></p>
+            <p class="wid-text-dark wid-c-font-3 wid-font-22 pt-md-4 pt-2 wid-sm-font-18"><span style="font-family: AvenirNextLTPro-Regular; font-size: 22px;">I’m Imran Ali, over the last 18 years; I have developed a wide range of websites and project management. 
+            <br>
+            To seek a challenging position in an IT Industry and contribute extensively in an environment where there are opportunities for personal and professional growth and also want to give my IT knowledge in business developments
+            <br>
+            Specialties: I also have some experience in the following areas: Digital Marketing, Wordpress, Drupla, Joomla, CSS3, html5, Flash , Website Designing and Graphic Design.</span><br></p>
         </div>
     </div>
 </div>
@@ -241,11 +220,8 @@ if(isset($instructor)){
 <!--End details of trainer-->
 <?php 
 }
-
- if(isset($courseOutline)){ 
-
+if(isset($courseOutline)){ 
 ?>
-
 <!--What to expect details-->
 <div class="container">
     <div class="row mt-md-3">
@@ -264,9 +240,7 @@ if(isset($instructor)){
             <div id="accordion" class="wid-text-dark">
                 <?php 
                     $j=0;
-                   
                 ?>
-
                 @foreach($courseOutline as $data)
                 <?php $j++; ?>
                 <div class="card">
@@ -285,7 +259,6 @@ if(isset($instructor)){
                     </div>
                 </div>
                 @endforeach
-            
             </div>
         </div>
     </div>
@@ -293,5 +266,4 @@ if(isset($instructor)){
 <?php } ?>
 <!--End what to expect details-->
 </section>
-
 @endsection

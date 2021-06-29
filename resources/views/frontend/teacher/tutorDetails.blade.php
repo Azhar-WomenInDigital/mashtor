@@ -3,10 +3,8 @@
 @section('frontend-style')
 @endsection
 @section('frontend-content')
-
 <section class="become-teacher pt-5 pb-5 bg-off-white">
-<br>
-
+    <br>
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -15,7 +13,6 @@
             </ol>
         </nav>
         <div class="=">
-            
             <div class="row">
                 <div class="col-12">
                     <div class="search-box bg-pink px-5">
@@ -26,7 +23,8 @@
                             <div class="input-group-append">
                                 <button class="btn btn-dark" type="button" id="button-addon">Search</button>
                             </div>
-                        </div> <br><br>
+                        </div> 
+                        <br><br>
                     </div>
                     <br>
                 </div>
@@ -36,10 +34,9 @@
                     <div class="card">
                         <div class="card-body">
                             <figure>
-                                <!-- <input id="fab" type="checkbox" class="fab"><label for="fab" class="toggle">+</label> -->
                                 <?php echo "<img src='".asset($tutors->image)."' class='img-fluid img-profile' alt='Card image'>";?>
                             </figure>
-                            <p class="text-center">${{$tutors->price}} /Hour</p> 
+                            <p class="text-center">$ {{$tutors->price}} / Hour</p> 
                             <div class="message text-center mt-3">
                                 <a href="#" class="btn btn-warning text-light"  data-toggle="modal" data-target="#staticBackdrop"> Message </a>
                             </div>
@@ -51,8 +48,6 @@
                             <h3>If you hire {{$tutors->fullname}}</h3>
                             <p>Please Contact us</p>
                             <h3 class="text-warning"><a href="tel:+8801635-497868" class="text-warning" style="text-decoration:none;">+8801635-497868</a></h3>
-                            <!-- <a href="#" class="btn btn-warning">Message</a>
-                            <a href="#" class="btn btn-info">Hire</a> -->
                         </div>
                     </div>
                     <br><br>
@@ -60,8 +55,6 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-body">
-                            
-                            
                             <div class="profile-details">
                                 <h4>{{$tutors->fullname}}</h4>
                                 <h6><b>{{$tutors->profile_tag}}</b></h6>
@@ -112,51 +105,44 @@
                                     <?php
                                         if(isset($courses) && !empty($courses)){
                                             foreach($courses as $course){
-
-
                                     ?>
                                     <li class="list-group-item">{{$course->courses}}</li>
-                                <?php } } ?>
+                                    <?php } } ?>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
         </div>
-        
-    </section>
-    <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Send Message To  {{$tutors->fullname}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-       <form action="{{url('/msg')}}" method="post">
-        @csrf
-        <input type="hidden" name="to" value="{{$tutors->user_id}}">
-      <div class="modal-body">
-       
-            <div class="form-group">
-                <textarea name="messages" id="" cols="5" rows="5" class="form-control"></textarea>
-            </div>
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Send</button>
-      </div>
-      </form>
     </div>
-  </div>
+</section>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Send Message To  {{$tutors->fullname}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{url('/msg')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="to" value="{{$tutors->user_id}}">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <textarea name="messages" id="" cols="5" rows="5" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-warning text-light">Send</button>
+                    </div>
+            </form>
+        </div>
+    </div>
 </div>
-    @section('frontend-scripts')
-    <script>
-    </script>
-    @endsection
-    @endsection
+@endsection
+@section('frontend-scripts')
+@endsection
