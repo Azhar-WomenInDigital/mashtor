@@ -370,7 +370,7 @@ class HomepageController extends Controller
             'courseuser_id' => $request->courseuser_id,
             'user_id' => $request->user_id,
         ]);
-        return redirect()->route('home');
+        return redirect()->route('user.course.info');
     }
 
 }

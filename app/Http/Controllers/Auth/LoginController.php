@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
 use DB;
+
+
 class LoginController extends Controller
 {
     /*
@@ -26,14 +28,27 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    // public function __construct()
+    // {
+    //     if (Auth::user())
+    //     {
+    //         $this->redirectTo = route('user.dashboard');
+    //     } 
+    //     $this->middleware('guest')->except('logout');
+    // }
+
+
+    // check if authenticated, then redirect to dashboard
+    protected function authenticated() {
+        if (Auth::check()) {
+            return redirect()->route('user.dashboard');
+        }
         $this->middleware('guest')->except('logout');
     }
 

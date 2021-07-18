@@ -6,7 +6,7 @@
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
+| routes are loaded by the RouteServiceProvider within a group that
 | contains the "web" middleware group. Now create something great!
 |
  */
@@ -63,6 +63,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 
 
 
+
     Route::get('teacher/find-tutor', 'Teacher\TeacherController@findTutor');
     Route::get('teacher/tutor-details/{id}', 'Teacher\TeacherController@tutorDetails');
     Route::get('/metarials-details/{id}', 'HomepageController@metarialsDetails');
@@ -100,10 +101,10 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::post('profile/setting', 'UserDashboardController@changePassword');
 
         // Dashboard
-        Route::get('user/dashboard', 'DashboardController@userDashboard');
+        Route::get('user/dashboard', 'DashboardController@userDashboard')->name('user.dashboard');
         Route::get('user/class', 'DashboardController@userClass');
         Route::get('notification', 'DashboardController@notification');
-        Route::get('user-course-info', 'DashboardController@userCourseInfo');
+        Route::get('user-course-info', 'DashboardController@userCourseInfo')->name('user.course.info');
 
         Route::get('invoice', 'DashboardController@invoice');
 
@@ -112,10 +113,9 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/live-chat', 'HomepageController@liveChat');
         Route::post('/msg', 'HomepageController@msg');
         Route::get('/livechat-student', 'HomepageController@livechatStudent');
+
         // Teacher
-
         Route::get('teacher/become-a-teacher', 'Teacher\TeacherController@becomeAteacher');
-
         Route::post('teacher/msg', 'Teacher\TeacherController@supportMsg');
         Route::post('teacher/request/{id}', 'Teacher\TeacherController@teacherRequest');
 
@@ -127,7 +127,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     });
 });
 
-//  Login And Registration with facebook and gmail
+//  Login And Registration with Facebook and Gmail
 
 Route::get('register/facebook', 'Auth\RegisterController@redirectToProvider');
 Route::get('register/facebook/callback', 'Auth\RegisterController@handleProviderCallback');
@@ -271,7 +271,7 @@ Route::group(['namespace' => 'Backend'], function () {
 
             Route::resource('advisor', 'AdvisiorTeamController');
 
-            // Message From Frotnend
+            // Message From Frontend
             Route::get('suggesion', 'SuggesionManageController@suggestionList');
             Route::get('suggesion/delete', 'SuggesionManageController@suggestionDelete');
 

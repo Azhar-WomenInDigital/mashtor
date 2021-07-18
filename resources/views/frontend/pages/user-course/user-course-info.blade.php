@@ -15,8 +15,8 @@
       @if (auth()->user())
       <div class="row justify-content-center">
         <div class="col-md-6">
-          <h2 class="pb-sm-3 pb-md-4">Please select one of the following courses</h2>
-          <form action="{{ url('selected-user-course-store') }}" method="POST">
+          <h4 class="pb-sm-3 pb-md-4">Please select one of the following courses</h4>
+          <form action="{{ route('selected.user.course.store') }}" method="POST">
             @csrf
             @foreach ($user_course as $data)
             <div class="form-check pb-sm-3">
