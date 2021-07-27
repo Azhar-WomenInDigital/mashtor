@@ -35,12 +35,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $i=0;?>
-                                    @foreach($users as $user)
-                                    <?php $i++; ?>
+                                    
+                                    @foreach($users as $key=> $user)
+                                    
                                     <tr>
                                          
-                                        <td>{{$i}}</td>
+                                        <td>{{$key +  1}}</td>
                                         <td>{{$user->fullname}}</td>
                                         <td>{{$user->email}}</td>
                                         
@@ -86,7 +86,7 @@
                                     
                                 </tbody>
                             </table>
-                            {{$users->links()}}
+                            {{-- {{$users->links()}} --}}
                         </div>
                     </div>
                 </div>

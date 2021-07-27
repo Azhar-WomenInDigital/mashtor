@@ -72,7 +72,7 @@
               </li>
               <li class="nav-item dropdown  navig-link">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">   
-                 Choose Course
+                  Projects 
                 </a>
                 <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
                   <?php

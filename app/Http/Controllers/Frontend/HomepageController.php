@@ -341,7 +341,16 @@ class HomepageController extends Controller
     {
         $user_course_categories = UserCourseCategory::findOrFail($id);
         $user_course = Courseuser::where('user_course_category_id', $id)->get();
-        return view('frontend.pages.user-course.user-course-info', compact('user_course_categories', 'user_course'));
+
+        $tutors = DB::table('users')
+        ->select('users.id as user_id', 'users.fullname', 'users.image', 'users.status', 'users.become_a_tutor', 'user_details.id as user_details_id', 'user_details.profile_tag', 'user_details.price')
+        ->join('user_details', 'user_details.user_id', '=', 'users.id')
+        ->where('users.become_a_tutor', 1)
+        ->where('users.status', 1)
+        ->get();
+
+        return view('frontend.pages.user-course.user-course-info', compact('user_course_categories', 'user_course','tutors'));
+
     }
 
     public function studentCourseCategory($id)

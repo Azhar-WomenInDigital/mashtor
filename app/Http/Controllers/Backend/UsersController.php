@@ -210,7 +210,7 @@ class UsersController extends Controller
     {
 
         $data = [];
-        $data['users'] = User::orderBy('id','desc')->paginate(20);
+        $data['users'] = User::orderBy('id','desc')->latest()->get();
         return view('backend.pages.user.allUsers',$data);
         
     }
