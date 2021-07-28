@@ -35,6 +35,9 @@
   .projects-card .des {
     height: auto
   }
+  .load-col{
+    display: none;
+  }
   
   @media only screen and (min-width: 768px) and (max-width: 991.98px) {
     .des {
@@ -206,7 +209,213 @@
       </div>
     </div>
   </section>
+  <!-- Trainer End -->
 
+  <!-- Students -->
+  <section>
+    <div class="container">
+      <h1 class="text-center pt-3 pb-4">Students</h1>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 load-col">
+          <div class="card tutor-card">
+            <img src="{{ url('frontend/assets/imgs/trainers/syedun-nessa-oni.jpg') }}" alt="" class="img-fluid">
+            <div class="des tutor-des">
+              <h5 class="pb-2">Syedun Nessa Oni</h5>
+              <p>Digital marketing</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="text-center">
+        <div class="btn btn-warning text-light">Load  More</div>
+      </div>
+    </div>
+  </section>
+  <!-- Students End -->
+
+
+  
 @endsection
 @section('frontend-scripts')
+<script>
+  $(".load-col").slice(0, 4).show()
+  $(".btn").on("click", function(){
+    $(".load-col:hidden").slice(0,4).slideDown()
+    if($(".load-col:hidden").length == 0){
+      $(".btn").fadeOut('slow')
+    }
+  })
+</script>
 @endsection
