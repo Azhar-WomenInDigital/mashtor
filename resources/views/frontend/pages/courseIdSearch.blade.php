@@ -23,6 +23,7 @@
 				</form>
 				<br>
 			</div>
+			
 			<?php
 				if(isset($courses) && !empty($courses)){
 					foreach($courses as $data){

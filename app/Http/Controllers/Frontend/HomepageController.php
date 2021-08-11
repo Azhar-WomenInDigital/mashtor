@@ -341,22 +341,40 @@ class HomepageController extends Controller
     {
         $user_course_categories = UserCourseCategory::findOrFail($id);
         $user_course = Courseuser::where('user_course_category_id', $id)->get();
+        // $user_selected_course = Courseuser::with('users')->get();
 
-        $tutors = DB::table('users')
-        ->select('users.id as user_id', 'users.fullname', 'users.image', 'users.status', 'users.become_a_tutor', 'user_details.id as user_details_id', 'user_details.profile_tag', 'user_details.price')
-        ->join('user_details', 'user_details.user_id', '=', 'users.id')
-        ->where('users.become_a_tutor', 1)
-        ->where('users.status', 1)
-        ->get();
+        $query = Courseuser::with('courseusers')->where('user_course_category_id', $id);
+        $student_course = $query->latest()->get();
+        $couserId = $query->pluck('id');
+        $usersID = DB::table('courseuser_user')->whereIn('courseuser_id',$couserId)->pluck('user_id')->unique();
+        $users = User::whereIn('id', $usersID)->get();
+        
 
-        return view('frontend.pages.user-course.user-course-info', compact('user_course_categories', 'user_course','tutors'));
-
+        return view('frontend.pages.user-course.user-course-info', compact('user_course_categories', 'user_course','student_course'));
     }
 
     public function studentCourseCategory($id)
     {
         $student_course_categories = UserCourseCategory::findOrFail($id);
-        $student_course = Courseuser::where('user_course_category_id', $id)->get();
+
+        // xtart
+        $query = Courseuser::with('courseusers')->where('user_course_category_id', $id);
+
+        $student_course = $query->get();
+
+        $couserId = $query->pluck('id');
+
+        $usersID = DB::table('courseuser_user')->whereIn('courseuser_id',$couserId)->pluck('user_id')->unique();
+
+        $users = User::whereIn('id', $usersID)->get();
+
+        // end
+
+        // $usersId = array_unique($usersID);
+
+
+
+        dd($users);
         return view('frontend.pages.student-course.student-course', compact('student_course_categories', 'student_course'));
     }
     // public function studentList($id)
@@ -380,6 +398,26 @@ class HomepageController extends Controller
             'user_id' => $request->user_id,
         ]);
         return redirect()->route('user.course.info');
+    }
+
+    public function showStudents(){
+        $course = Courseuser::with('courseusers')->where('user_course_category_id', 2)->get();
+
+        dd($course);
+    }
+
+
+    // Show Mashtor
+    public function showMashtor(){
+        /*$data['tutors'] = DB::table('users')
+            ->select('users.id as user_id', 'users.fullname', 'users.image', 'users.status', 'users.become_a_tutor', 'user_details.id as user_details_id', 'user_details.profile_tag', 'user_details.price')
+            ->join('user_details', 'user_details.user_id', '=', 'users.id')
+            ->where('users.become_a_tutor', 1)
+            ->where('users.status', 1)
+            ->paginate(8);*/
+        $data['students'] = DB::table('users')->latest()
+        ->paginate(8);
+        return view('frontend.pages.mashtor-alumini', $data);
     }
 
 }

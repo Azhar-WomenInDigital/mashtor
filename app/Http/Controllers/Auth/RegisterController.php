@@ -55,7 +55,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'number' => ['required','Numeric',  'unique:users','regex:/(01)[0-9]{9}/'],
+            'number' => ['required','Numeric',  'unique:users'],
             'nid' => ['required'],
             'fullname' => ['required'],
             'discount_code' => ['nullable', new CheckDiscountCode],

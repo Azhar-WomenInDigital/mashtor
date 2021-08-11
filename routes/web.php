@@ -60,6 +60,16 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('student-course-category/{id}', 'HomepageController@studentCourseCategory');
     // Route::get('student-list/{id}', 'HomepageController@studentList');
 
+    
+
+    // Test Course 
+    Route::get('show-students', 'HomepageController@showStudents');
+
+
+
+
+    // Mashtor Alumni
+    Route::get('mashtor-alumni', 'HomepageController@showMashtor');
 
 
 
