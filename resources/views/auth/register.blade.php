@@ -77,6 +77,7 @@ display: block;
                             <input type="password" id="password-field2" class="form-control custom-form-control" id="password" name="password_confirmation" required>
                             <span toggle="#password-field2" class="fa fa-fw fa-eye-slash field-icon toggle-password"></span>
                         </div>
+                        <!--
                         <div class="form-group">
                             <label for="discountcode" class="text-light">Discount Code</label>
                             <input type="text" id="password-field2" class="form-control custom-form-control" id="password" name="discount_code">
@@ -87,6 +88,7 @@ display: block;
                             @endif
                             <span class="text-light">If you have a discount code, avail it. Otherwise skip</span>
                         </div>
+                        -->
                         <div class="form-group text-center pt-5">
                             <button type="submit" class="btn btn-dark font-weight-bold  p-2 wid-border-radius-none wid-font-22 wid-button wid-sm-font-18">Submit</button>
                         </div>

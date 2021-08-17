@@ -28,31 +28,29 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::user()->activate_status == 1){
-        return redirect('dashboard');
-    }else{
-        Auth::logout();
-        return redirect('login');
-    }
-
+            return redirect('dashboard');
+        }else{
+            Auth::logout();
+            return redirect('login');
+        }
     }
 
     public function logout(Request $request) {
-       Auth::logout();
+        Auth::logout();
         return redirect('/login');
     } 
 
     public function tnrCode(){
         if(Auth::user()){
-        return view('auth.tnrcode');
-    }else{
-        return redirect('register');
-    }
+            return view('auth.tnrcode');
+        }else{
+            return redirect('register');
+        }
     }
 
     public function tnrCodePost(Request $request){
         $validator = Validator::make(request()->all(),[
             'tnr_code' => 'required'
-           
         ]);
 
         $users = User::where('code',Auth::user()->code)->first();

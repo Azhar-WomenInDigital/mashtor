@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => 'dev.womenindigital@gmail.com',
+    'username' => 'womenindigitalbd@gmail.com',
 
-    'password' => 'sqjziuymybauodpl',
+    'password' => 'Angpbd_2017',
 
     /*
     |--------------------------------------------------------------------------

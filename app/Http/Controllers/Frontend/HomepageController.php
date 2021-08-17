@@ -43,6 +43,8 @@ class HomepageController extends Controller
         return view('frontend.pages.home', $data);
     }
 
+
+
     public function ntrCode()
     {
         return view('auth.tnrcode');

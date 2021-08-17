@@ -16,7 +16,7 @@
 // Route::group(['middleware'=>['assign.guard:tutor,login']],function(){
 
 // });
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
