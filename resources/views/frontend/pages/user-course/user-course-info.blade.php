@@ -124,7 +124,7 @@
     
 @endsection
 @section('frontend-content')
-  <section class="container">
+    <section class="container">
     <div class="course-heading pt-sm-3 pt-md-4 pt-lg-5">
       <div class="text-center pb-sm-4 pb-md-5 main-header">
         <h1 style="font-family: AvenirNextLTPro-Medium">{{ $user_course_categories->user_course_category_name }}</h1>
@@ -328,19 +328,19 @@
             <img src="{{ url($item->image) }}" alt="" class="img-fluid">
             <div class="des tutor-des">
               <h5 class="pb-2 text-capitalize">{{ $item->fullname }}</h5>
-              <div class="d-flex pt-2">
+              {{-- <div class="d-flex pt-2">
                 <i class="fas fa-star text-warning"></i>
                 <i class="fas fa-star text-warning"></i>
                 <i class="fas fa-star text-warning"></i>
                 <i class="fas fa-star text-warning"></i>
-              </div>
+              </div> --}}
               <div class="d-flex pt-2 rating">
                 <span>5</span>
                 <span>/</span>
                 <span>5</span>
                 <span>-High Recommended</span>
               </div>
-              <p>Graduated 1 Day Ago</p>
+              {{-- <p>Graduated 1 Day Ago</p> --}}
               <a href="#" class="text-info">Read More</a>
             </div>
           </div>
