@@ -594,6 +594,7 @@ color: gray;
     opacity: 10;
     transition: opacity 1s ease;
 }
+/* Pulse Animation */
 
 .pulse {
     display: block;
@@ -604,36 +605,26 @@ color: gray;
     background: #343A40;
     cursor: pointer;
     box-shadow: 0 0 0 rgb(rgb(52, 58, 64));
+    transform: scale(1);
     animation: pulse 2s infinite;
 }
-.pulse:hover {
-  animation: none;
-}
 
-@-webkit-keyframes pulse {
-  0% {
-    -webkit-box-shadow: 0 0 0 0 rgba(178,34,34, 0.4);
-  }
-  70% {
-      -webkit-box-shadow: 0 0 0 10px rgba(178,34,34, 0.4);
-  }
-  100% {
-      -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
-  }
-}
+
 @keyframes pulse {
-  0% {
-    -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
-    box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
-  }
-  70% {
-      -moz-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
-      box-shadow: 0 0 0 10px rgba(204,169,44, 0);
-  }
-  100% {
-      -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
-      box-shadow: 0 0 0 0 rgba(204,169,44, 0);
-  }
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
 }
 /*==================================================================
   User Dashbaord Pages Here
@@ -712,7 +703,7 @@ color: gray;
   height: 50px;
 }
 
-.nav-item:nth-child(6) {
+.nav-item:nth-child(7) {
     /* margin-left: 185px; */
     /* margin-left: 0px !important; */
     margin-right: 130px !important;

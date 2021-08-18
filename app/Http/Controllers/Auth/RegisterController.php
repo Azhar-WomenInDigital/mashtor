@@ -58,7 +58,7 @@ class RegisterController extends Controller
             'number' => ['required','Numeric',  'unique:users'],
             'nid' => ['required'],
             'fullname' => ['required'],
-            'discount_code' => ['nullable', new CheckDiscountCode],
+            //'discount_code' => ['nullable', new CheckDiscountCode],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             
         ]);
@@ -86,7 +86,7 @@ class RegisterController extends Controller
             'fullname' => $data['fullname'],
             'nid' => $nid,
             'email' => $data['email'],
-            'discount_code' => $data['discount_code'],
+            //'discount_code' => $data['discount_code'],
             'password' => Hash::make($data['password']),
              
             

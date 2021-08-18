@@ -99,9 +99,9 @@
               <li class="nav-item {{ request()->is('/teacher/find-tutor') ? 'active' : '' }}  navig-link">
                 <a class="nav-link"  href="{{url('teacher/find-tutor')}}">Find Mashtor</a>
               </li>
-              <!--<li class="nav-item {{ request()->is('/live-class') ? 'active' : '' }}  navig-link">
+              <li class="nav-item {{ request()->is('/live-class') ? 'active' : '' }}  navig-link">
                 <a class="nav-link"  href="{{url('live-class')}}">Demo <span class="pulse"></span></a>
-              </li>-->
+              </li>
               <li class="nav-item {{ request()->is('/mashtor-alumni') ? 'active' : '' }}  navig-link">
                 <a class="nav-link"  href="{{url('mashtor-alumni')}}">Alumni</a>
               </li>
